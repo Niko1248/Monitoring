@@ -22,7 +22,7 @@ window.onload = function (){
 	function popup() {				// Отображение и скрытие попапа
 		system.forEach(item => {			
 			item.addEventListener("click", () => {
-				let popup = item.querySelector('.popup__wrapper');
+				let popup = item.querySelector('.popup');
 				popupBG.classList.add('popup__on');
 				popup.classList.add('popup__on');
 				let popupClose = item.querySelector('.close');

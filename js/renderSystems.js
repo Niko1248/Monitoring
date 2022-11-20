@@ -24,20 +24,18 @@ function renderSystems(systemsArray) {
 														<div>${item.type}</div>
 														<div class="state">${item.state}</div>
 													</div>
-													<div class="popup__wrapper">
-														<div class="popup">
-															<div class="close">
-																<a class="close__img">
-																	<img src="./img/close.png" alt="" />
-																</a>
-															</div>
-															<div class="popup__content">
-																<div>Трасса: </div>
-																<div>Каналы: </div>
-																<div>Что-нибудь еще: </div>
-															</div>
-														</div>	
-													</div>			
+													<div class="popup">
+														<div class="close">
+															<a class="close__img">
+																<img src="./img/close.png" alt="" />
+															</a>
+														</div>
+														<div class="popup__content">
+															<div>Трасса: </div>
+															<div>Каналы: </div>
+															<div>Что-нибудь еще: </div>
+														</div>
+													</div>	
 												</div>`
 		    //вставляем шаблон в страницу(отрисовываем)
     systemsContainer.insertAdjacentHTML('beforeend', systemHTML)

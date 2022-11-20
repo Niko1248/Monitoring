@@ -64,7 +64,7 @@ h1{
 	cursor: auto;
 }	
 .popup__bg{
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	height: 100vh;
@@ -73,19 +73,15 @@ h1{
 	backdrop-filter: blur(2px);
 	z-index: 3;
 }
-.popup__wrapper{
-	display: none;
-	width: 100%;
-	height: 25vh;
-	position: absolute;
-	top: 0;
-	left: 0;
-}
 .popup{
-	position: relative;
+	display: none;
+	width: 80%;
+	height: 25vh;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
 	margin: 0 auto;
-	width: 90%;
-	height: 100%;
 	background-color: #1f1d1d;
 	border-radius: 15px;
 	z-index: 4;
@@ -102,11 +98,11 @@ h1{
 	}
 }
 .popup__content{
-	height: 100%;
+	height: 90%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
-	width: 90%;
+	width: 80%;
 }
 .popup__on{
 	display: block;
@@ -118,13 +114,11 @@ h1{
 	color: red;
 }
 .hidden_search {
-	visibility: hidden;
-	position: absolute;
+	display: none;
 }
 .show_search {
-	visibility: visible;
+	display: block;
 }
 .hidden_check{
-	visibility: hidden;
-	position: absolute;
+	display: none;
 }
