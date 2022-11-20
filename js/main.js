@@ -1,5 +1,5 @@
 window.onload = function () {
-  setTimeout(function () {
+  /* setTimeout(function () {
     var preloader = document.getElementById('p_preloader')
     if (!preloader.classList.contains('done')) {
       preloader.style.visibility = 'hidden'
@@ -7,7 +7,7 @@ window.onload = function () {
       document.querySelector('body').style.overflowX = 'visible'
       document.querySelector('body').style.overflowY = 'visible'
     }
-  }, 6500)
+  }, 6500) */
 
   const state = document.querySelectorAll('.state')
   const system = document.querySelectorAll('.table__grid')
