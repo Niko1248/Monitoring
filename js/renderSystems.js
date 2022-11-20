@@ -51,7 +51,7 @@ function renderSystems(systemsArray) {
 			<div>Загрузка: 
 																		
 			</div>
-			<div class="state"> Состояние: ${item.state}</div
+			<div class="popup__state"> Состояние: ${item.state} </div
 			</div>
 		</div>
 	</div>	
