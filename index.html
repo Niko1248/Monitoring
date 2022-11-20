@@ -1,40 +1,51 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Система мониторинга</title>
-	<link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-	<header class="header">
-		<div class="wrapper">
-			<h1>Система мониторинга систем передачи центра связи (СУС)</h1>
-			<form class="search-form" action="" method="GET">
-				<label hidden for="system-search">Фильтр</label>
-				<input placeholder="Начните набирать название..." type="search" name="system-search" id="system-search" class="system-search">
-				<input type="checkbox" name="state-on" value="В работе" id="filter-on">В работе
-				<input type="checkbox" name="state-off" value="Авария" id="filter-off">Авария
-		</form>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Система мониторинга</title>
+		<link rel="stylesheet" href="/css/style.css">
+	</head>
+
+	<body>
+		<div id="p_preloader" class="preloader">
+			<div class="load">
+				<img src="/img/6ef4.gif" alt="" srcset="">
+			</div>
 		</div>
-	</header>
-	<div class="main">
-		<div class="wrapper">
-			<div class="table" id="table-systems">
-				<div class="table__title">
-					<div>№ <br>п/п</div>
-					<div>Система передачи</div>
-					<div>Приоритет</div>
-					<div>Корреспондент</div>
-					<div>Тип трассы</div>
-					<div>Состояние</div>
+		<div class="box">
+			<div class="wrapper__1">
+				<h2>Система мониторинга систем передачи центра связи (СУС)</h2>
+				<form class="search-form" action="" method="GET">
+					<div><label hidden for="system-search">Фильтр</label>
+						<input placeholder="Поиск..." type="search" name="system-search" id="system-search"
+							class="system-search">
+					</div>
+					<div><input type="checkbox" name="state-on" value="В работе" id="filter-on"> Исправные</div>
+					<div><input type="checkbox" name="state-off" value="Авария" id="filter-off"> Неисправные</div>
+
+				</form>
+			</div>
+			<div class="main">
+				<div class="wrapper">
+					<div class="table" id="table-systems">
+						<div class="table__title">
+							<div>№ <br>п/п</div>
+							<div>Система передачи</div>
+							<div>Приоритет</div>
+							<div>Корреспондент</div>
+							<div>Тип трассы</div>
+							<div>Состояние</div>
+						</div>
+					</div>
+					<div class="popup__bg">
+					</div>
 				</div>
 			</div>
-			<div class="popup__bg">
-		</div>
-	</div>
-	<script src="./js/renderSystems.js"></script>
-	<script src="./js/main.js"></script>
-</body>
+			<script src="./js/renderSystems.js"></script>
+			<script src="./js/main.js"></script>
+	</body>
+
 </html>

@@ -1,10 +1,15 @@
 @font-face {
-	font-family: raleway_c;
-	src: url(..//fonts/raleway-v22-cyrillic-300.woff2);
-	font-weight: 300;
+  font-family: Roboto;
+  src: url(..//fonts/RobotoMono-ExtraLight.ttf);
+  font-weight: 100;
 }
 @font-face {
- font-family: raleway_c;
- src: url(..//fonts/raleway-v22-cyrillic-100.woff2);
- font-weight: 100;
+  font-family: Roboto;
+  src: url(..//fonts/RobotoMono-Light.ttf);
+  font-weight: 200;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(..//fonts/RobotoMono-Medium.ttf);
+  font-weight: 300;
 }

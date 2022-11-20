@@ -44,7 +44,7 @@ blockquote, q {
 
 blockquote:before, blockquote:after,
 q:before, q:after {
-  content: '';
+  content: "";
   content: none;
 }
 
@@ -64,7 +64,6 @@ input[type=search]::-webkit-search-results-decoration {
 input[type=search] {
   -webkit-appearance: none;
   -moz-appearance: none;
-  -webkit-box-sizing: content-box;
   box-sizing: content-box;
 }
 
@@ -110,12 +109,9 @@ audio:not([controls]) {
  *    user zoom.
  */
 html {
-  font-size: 100%;
-  /* 1 */
-  -webkit-text-size-adjust: 100%;
-  /* 2 */
-  -ms-text-size-adjust: 100%;
-  /* 2 */
+  font-size: 100%; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -ms-text-size-adjust: 100%; /* 2 */
 }
 
 /**
@@ -138,10 +134,8 @@ a:hover {
  * 2. Improve image quality when scaled in IE 7.
  */
 img {
-  border: 0;
-  /* 1 */
-  -ms-interpolation-mode: bicubic;
-  /* 2 */
+  border: 0; /* 1 */
+  -ms-interpolation-mode: bicubic; /* 2 */
 }
 
 /**
@@ -173,13 +167,10 @@ fieldset {
  * 3. Correct alignment displayed oddly in IE 6/7.
  */
 legend {
-  border: 0;
-  /* 1 */
+  border: 0; /* 1 */
   padding: 0;
-  white-space: normal;
-  /* 2 */
-  *margin-left: -7px;
-  /* 3 */
+  white-space: normal; /* 2 */
+  *margin-left: -7px; /* 3 */
 }
 
 /**
@@ -192,14 +183,10 @@ button,
 input,
 select,
 textarea {
-  font-size: 100%;
-  /* 1 */
-  margin: 0;
-  /* 2 */
-  vertical-align: baseline;
-  /* 3 */
-  *vertical-align: middle;
-  /* 3 */
+  font-size: 100%; /* 1 */
+  margin: 0; /* 2 */
+  vertical-align: baseline; /* 3 */
+  *vertical-align: middle; /* 3 */
 }
 
 /**
@@ -232,15 +219,12 @@ select {
  *    Known issue: inner spacing remains in IE 6.
  */
 button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-  -webkit-appearance: button;
-  /* 2 */
-  cursor: pointer;
-  /* 3 */
-  *overflow: visible;
-  /* 4 */
+html input[type=button],
+input[type=reset],
+input[type=submit] {
+  -webkit-appearance: button; /* 2 */
+  cursor: pointer; /* 3 */
+  *overflow: visible; /* 4 */
 }
 
 /**
@@ -257,17 +241,12 @@ html input[disabled] {
  * 3. Remove excess padding in IE 7.
  *    Known issue: excess padding remains in IE 6.
  */
-input[type="checkbox"],
-input[type="radio"] {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  /* 1 */
-  padding: 0;
-  /* 2 */
-  *height: 13px;
-  /* 3 */
-  *width: 13px;
-  /* 3 */
+input[type=checkbox],
+input[type=radio] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+  *height: 13px; /* 3 */
+  *width: 13px; /* 3 */
 }
 
 /**
@@ -275,11 +254,8 @@ input[type="radio"] {
  * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
  *    (include `-moz` to future-proof).
  */
-input[type="search"] {
-  -webkit-appearance: textfield;
-  /* 1 */
-  -webkit-box-sizing: content-box;
-  /* 2 */
+input[type=search] {
+  -webkit-appearance: textfield; /* 1 */ /* 2 */
   box-sizing: content-box;
 }
 
@@ -287,8 +263,8 @@ input[type="search"] {
  * Remove inner padding and search cancel button in Safari 5 and Chrome
  * on OS X.
  */
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -306,10 +282,8 @@ input::-moz-focus-inner {
  * 2. Improve readability and alignment in all browsers.
  */
 textarea {
-  overflow: auto;
-  /* 1 */
-  vertical-align: top;
-  /* 2 */
+  overflow: auto; /* 1 */
+  vertical-align: top; /* 2 */
 }
 
 /**
@@ -360,45 +334,116 @@ textarea {
 }
 
 *, *:before, *:after {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 @font-face {
-  font-family: raleway_c;
-  src: url(..//fonts/raleway-v22-cyrillic-300.woff2);
-  font-weight: 300;
-}
-
-@font-face {
-  font-family: raleway_c;
-  src: url(..//fonts/raleway-v22-cyrillic-100.woff2);
+  font-family: Roboto;
+  src: url(..//fonts/RobotoMono-ExtraLight.ttf);
   font-weight: 100;
 }
-
+@font-face {
+  font-family: Roboto;
+  src: url(..//fonts/RobotoMono-Light.ttf);
+  font-weight: 200;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(..//fonts/RobotoMono-Medium.ttf);
+  font-weight: 300;
+}
 body {
-  font-family: "raleway_c";
+  font-family: "Roboto";
   font-style: normal;
   font-weight: 100;
   color: white;
   font-size: 16px;
-  background: #1f1d1d;
+  background: #444444;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 h1 {
   font-weight: 400;
   text-align: center;
   font-size: 24px;
-  margin-top: 50px;
+  margin-top: 10px;
+}
+
+#p_preloader {
+  background: #000;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9;
+  opacity: 1;
+  visibility: visible;
+  transition: 2s;
+}
+
+.box {
+  width: 100%;
+  display: flex;
+}
+
+.wrapper__1 {
+  min-width: 15%;
+  margin-right: 30px;
+}
+.wrapper__1 h2 {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 10px;
+  font-weight: bold;
 }
 
 .main {
+  width: 100%;
   position: relative;
-  height: 2000px;
+}
+
+.search-form {
+  padding-top: 20px;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.system-search {
+  color: white;
+  border: none;
+  background: #000;
+  width: 100%;
+  height: 30px;
+  border-radius: 20px;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+.system-search::-moz-placeholder {
+  color: #444444;
+}
+.system-search:-ms-input-placeholder {
+  color: #444444;
+}
+.system-search::placeholder {
+  color: #444444;
+}
+
+#filter-on,
+#filter-off {
+  background-color: #000;
+  margin-top: 10px;
 }
 
 .wrapper {
-  max-width: 90%;
+  max-width: 100%;
   padding: 0 20px;
   margin: 0 auto;
   overflow: hidden;
@@ -406,59 +451,47 @@ h1 {
 }
 
 .table {
-  display: -ms-grid;
   display: grid;
-  background: #38353593;
-  margin-top: 50px;
+  background: #333333;
+  margin-top: 10px;
+  border-radius: 5px;
   gap: 5px;
 }
 
 .table__grid {
-  display: -ms-grid;
   display: grid;
   position: relative;
-  -ms-grid-columns: 0.3fr 1fr 1fr 1fr 1fr 1fr;
-      grid-template-columns: 0.3fr 1fr 1fr 1fr 1fr 1fr;
+  text-align: center;
+  grid-template-columns: 0.3fr 1fr 1fr 1fr 1fr 1fr;
   grid-column: span 6;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
+  margin: 0 20px;
 }
 
 .table__item {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 0.3fr 1fr 1fr 1fr 1fr 1fr;
-      grid-template-columns: 0.3fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 0.3fr 1fr 1fr 1fr 1fr 1fr;
   grid-column: span 6;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   padding: 7px 0;
-  -webkit-transition: 0.2s;
   transition: 0.2s;
+  border-radius: 5px;
 }
-
 .table__item:hover {
-  background-color: rgba(210, 172, 172, 0.371);
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
+  background-color: rgba(0, 0, 0, 0.697);
+  transition: 0.2s;
   cursor: pointer;
 }
 
 .table__title {
-  display: -ms-grid;
+  text-align: center;
   display: grid;
   position: relative;
-  -ms-grid-columns: 0.3fr 1fr 1fr 1fr 1fr 1fr;
-      grid-template-columns: 0.3fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 0.3fr 1fr 1fr 1fr 1fr 1fr;
   grid-column: span 6;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   padding: 5px 0;
   font-weight: 300;
-  font-style: italic;
   cursor: auto;
 }
 
@@ -481,22 +514,20 @@ h1 {
   position: fixed;
   left: 50%;
   top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   margin: 0 auto;
-  background-color: #1f1d1d;
-  border-radius: 15px;
+  background-color: rgba(17, 17, 17, 0.8156862745);
+  border-radius: 5px;
   z-index: 4;
 }
 
 .close {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 10px;
+  right: 10px;
   z-index: 4;
   cursor: pointer;
 }
-
 .close img {
   width: 30px;
   height: 30px;
@@ -504,17 +535,19 @@ h1 {
 
 .popup__content {
   height: 90%;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  margin: 0 auto;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: space-evenly;
   width: 80%;
+}
+
+.popup__content-down {
+  display: flex;
+  justify-content: space-between;
+}
+.popup__content-down div {
+  width: 50%;
 }
 
 .popup__on {
