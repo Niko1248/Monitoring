@@ -16,7 +16,15 @@ function renderSystems(systemsArray) {
   //перебираем все элементы в массиве и вставляем их в шаблон
   systemsArray.forEach(function (item) {
     const systemHTML = `<div class="table__grid">
-													<div class="popup__bg">
+													<div class="table__item">
+														<div>${item.id}</div>
+														<div>${item.number}</div>
+														<div>${item.priority}</div>
+														<div>${item.correspondent}</div>
+														<div>${item.type}</div>
+														<div class="state">${item.state}</div>
+													</div>
+													<div class="popup__wrapper">
 														<div class="popup">
 															<div class="close">
 																<a class="close__img">
@@ -28,18 +36,9 @@ function renderSystems(systemsArray) {
 																<div>Каналы: </div>
 																<div>Что-нибудь еще: </div>
 															</div>
-														</div>					
-													</div>
-													<div class="table__item">
-														<div>${item.id}</div>
-														<div>${item.number}</div>
-														<div>${item.priority}</div>
-														<div>${item.correspondent}</div>
-														<div>${item.type}</div>
-														<div class="state">${item.state}</div>
-													</div>
-												</div>
-												`
+														</div>	
+													</div>			
+												</div>`
 		    //вставляем шаблон в страницу(отрисовываем)
     systemsContainer.insertAdjacentHTML('beforeend', systemHTML)
   })
