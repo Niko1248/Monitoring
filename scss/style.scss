@@ -17,9 +17,9 @@ h1{
 }
 .main{
 	position: relative;
+	height: 2000px;
 }
 .wrapper{
-	height: 2000px;
 	max-width: 90%;
 	padding: 0 20px;
 	margin: 0 auto;
@@ -64,7 +64,7 @@ h1{
 	cursor: auto;
 }	
 .popup__bg{
-	position: fixed;
+	position: absolute;
 	top: 0;
 	left: 0;
 	height: 100vh;
@@ -117,42 +117,14 @@ h1{
 .state_off{
 	color: red;
 }
-// .popup__bg{
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   height: 100vh;
-//   min-width: 100%;
-//   display: -webkit-box;
-//   display: -ms-flexbox;
-//   display: flex;
-//   -webkit-box-align: center;
-//   -ms-flex-align: center;
-//   align-items: center;
-//   z-index: -1;
-//   -webkit-transition: 1s ease;
-//   -o-transition: 0.5s ease;
-//   transition: 0.5s ease;
-//   -webkit-backdrop-filter: blur(2px);
-//   backdrop-filter: blur(2px);
-
-// }
-// .popup{
-// 	display: block;
-// 	position: relative;
-// 	top: 0;
-// 	left: 0;
-// 	height: 20vh;
-// }
-// .popup__bg{
-// 	position: fixed;
-//   top: 0;
-//   left: 0;
-//   height: 100vh;
-//   min-width: 100%;
-//   display: flex;
-//   align-items: center;
-//   z-index: -10;
-//   transition: 0.5s ease;
-//   backdrop-filter: blur(2px);
-// }
+.hidden_search {
+	visibility: hidden;
+	position: absolute;
+}
+.show_search {
+	visibility: visible;
+}
+.hidden_check{
+	visibility: hidden;
+	position: absolute;
+}

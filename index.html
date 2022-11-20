@@ -8,8 +8,16 @@
 	<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-	<header>
-		<h1>Система мониторинга систем передачи центра связи (СУС)</h1>
+	<header class="header">
+		<div class="wrapper">
+			<h1>Система мониторинга систем передачи центра связи (СУС)</h1>
+			<form class="search-form" action="" method="GET">
+				<label hidden for="system-search">Фильтр</label>
+				<input placeholder="Начните набирать название..." type="search" name="system-search" id="system-search" class="system-search">
+				<input type="checkbox" name="state-on" value="В работе" id="filter-on">В работе
+				<input type="checkbox" name="state-off" value="Авария" id="filter-off">Авария
+		</form>
+		</div>
 	</header>
 	<div class="main">
 		<div class="wrapper">
