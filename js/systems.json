@@ -5,7 +5,10 @@
 		"priority": "Особо важная",
 		"correspondent": "Колибри - Рубин",
 		"type": "Цифровая",
-		"state": "В работе"
+		"state": "В работе",
+		"trace": "1827 + 1225 + 110152",
+		"chanels": "1122 12341",
+		"anything": "dasfasdfasdf"
 	},
 	{
 		"id": 2,
@@ -13,7 +16,10 @@
 		"priority": "Особо важная",
 		"correspondent": "Колибри - Рубин",
 		"type": "Цифровая",
-		"state": "Авария"
+		"state": "Авария",
+		"trace": "1827 + 1225 + 110152",
+		"chanels": "1122 12341",
+		"anything": "dasfasdfasdf"
 	},
 	{
 		"id": 3,
