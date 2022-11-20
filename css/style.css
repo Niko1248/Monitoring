@@ -407,16 +407,24 @@ h1 {
   display: -ms-grid;
   display: grid;
   background: #38353593;
-  gap: 15px;
+  gap: 5px;
   margin-top: 50px;
 }
 
-.table__title {
-  font-weight: 300;
-  font-style: italic;
+.table__grid {
+  display: -ms-grid;
+  display: grid;
+  position: relative;
+  -ms-grid-columns: 0.3fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 0.3fr 1fr 1fr 1fr 1fr 1fr;
+  grid-column: span 6;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 5px 0;
 }
 
-.table__grid {
+.table__item {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 0.3fr 1fr 1fr 1fr 1fr 1fr;
@@ -425,7 +433,79 @@ h1 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 5px 0;
+}
+
+.table__item:hover {
+  background-color: rgba(210, 172, 172, 0.371);
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
   cursor: pointer;
+}
+
+.table__title {
+  font-weight: 300;
+  font-style: italic;
+  cursor: auto;
+}
+
+.popup__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25vh;
+  width: 100%;
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  z-index: 3;
+  cursor: auto;
+}
+
+.popup {
+  position: relative;
+  margin: 0 auto;
+  width: 90%;
+  height: 100%;
+  background-color: #1f1d1d;
+  border-radius: 15px;
+  z-index: 3;
+}
+
+.close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.close img {
+  width: 30px;
+  height: 30px;
+}
+
+.popup__content {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 90%;
+}
+
+.popup__on {
+  display: block;
+  pointer-events: none;
 }
 
 .state_on {
