@@ -1,7 +1,7 @@
 [
 	{
 		"id": 1,
-		"number": 110222,
+		"numberSystem": 110222,
 		"priority": "Особо важная",
 		"correspondent": "Колибри - Рубин",
 		"type": "Цифровая",
@@ -12,7 +12,7 @@
 	},
 	{
 		"id": 2,
-		"number": 110222,
+		"numberSystem": 110222,
 		"priority": "Особо важная",
 		"correspondent": "Колибри - Рубин",
 		"type": "Цифровая",
@@ -23,7 +23,7 @@
 	},
 	{
 		"id": 3,
-		"number": 110222,
+		"numberSystem": 110222,
 		"priority": "Обыкновенный",
 		"correspondent": "Колибри - Брус",
 		"type": "Аналоговая",
@@ -31,7 +31,7 @@
 	},
 	{
 		"id": 4,
-		"number": 110222,
+		"numberSystem": 110222,
 		"priority": "Особо важная",
 		"correspondent": "Колибри - Рубин",
 		"type": "Цифровая",
@@ -39,7 +39,7 @@
 	},
 	{
 		"id": 5,
-		"number": 1827,
+		"numberSystem": 1827,
 		"priority": "Обыкновенный",
 		"correspondent": "Колибри - Перископ",
 		"type": "Аналоговая",
@@ -47,7 +47,7 @@
 	},
 	{
 		"id": 6,
-		"number": 110222,
+		"numberSystem": 110222,
 		"priority": "Особо важная",
 		"correspondent": "Колибри - Рубин",
 		"type": "Цифровая",
@@ -55,7 +55,7 @@
 	},
 	{
 		"id": 7,
-		"number": 110222,
+		"numberSystem": 110222,
 		"priority": "Особо важная",
 		"correspondent": "Колибри - Рубин",
 		"type": "Цифровая",
@@ -63,7 +63,7 @@
 	},
 	{
 		"id": 8,
-		"number": 110222,
+		"numberSystem": 110222,
 		"priority": "Обыкновенный",
 		"correspondent": "Колибри - Брус",
 		"type": "Аналоговая",
@@ -71,7 +71,7 @@
 	},
 	{
 		"id": 9,
-		"number": 110222,
+		"numberSystem": 110222,
 		"priority": "Особо важная",
 		"correspondent": "Колибри - Рубин",
 		"type": "Цифровая",
@@ -79,7 +79,7 @@
 	},
 	{
 		"id": 10,
-		"number": 1827,
+		"numberSystem": 1827,
 		"priority": "Обыкновенный",
 		"correspondent": "Колибри - Перископ",
 		"type": "Аналоговая",
@@ -87,7 +87,7 @@
 	},
 	{
 		"id": 11,
-		"number": 110222,
+		"numberSystem": 110222,
 		"priority": "Особо важная",
 		"correspondent": "Колибри - Рубин",
 		"type": "Цифровая",
@@ -95,7 +95,7 @@
 	},
 	{
 		"id": 12,
-		"number": 110222,
+		"numberSystem": 110222,
 		"priority": "Особо важная",
 		"correspondent": "Колибри - Рубин",
 		"type": "Цифровая",
@@ -103,7 +103,7 @@
 	},
 	{
 		"id": 13,
-		"number": 110222,
+		"numberSystem": 110222,
 		"priority": "Обыкновенный",
 		"correspondent": "Колибри - Брус",
 		"type": "Аналоговая",
@@ -111,7 +111,7 @@
 	},
 	{
 		"id": 14,
-		"number": 110222,
+		"numberSystem": 110222,
 		"priority": "Особо важная",
 		"correspondent": "Колибри - Рубин",
 		"type": "Цифровая",
@@ -119,14 +119,14 @@
 	},
 	{
 		"id": 15,
-		"number": 1827,
+		"numberSystem": 1827,
 		"priority": "Обыкновенный",
 		"correspondent": "Колибри - Перископ",
 		"type": "Аналоговая",
 		"state": "В работе"
 	},{
 		"id": 1,
-		"number": 110222,
+		"numberSystem": 110222,
 		"priority": "Особо важная",
 		"correspondent": "Колибри - Рубин",
 		"type": "Цифровая",
@@ -137,7 +137,7 @@
 	},
 	{
 		"id": 2,
-		"number": 110222,
+		"numberSystem": 110222,
 		"priority": "Особо важная",
 		"correspondent": "Колибри - Рубин",
 		"type": "Цифровая",
@@ -148,7 +148,7 @@
 	},
 	{
 		"id": 3,
-		"number": 110222,
+		"numberSystem": 110222,
 		"priority": "Обыкновенный",
 		"correspondent": "Колибри - Брус",
 		"type": "Аналоговая",
@@ -156,7 +156,7 @@
 	},
 	{
 		"id": 4,
-		"number": 110222,
+		"numberSystem": 110222,
 		"priority": "Особо важная",
 		"correspondent": "Колибри - Рубин",
 		"type": "Цифровая",
@@ -164,7 +164,7 @@
 	},
 	{
 		"id": 5,
-		"number": 1827,
+		"numberSystem": 1827,
 		"priority": "Обыкновенный",
 		"correspondent": "Колибри - Перископ",
 		"type": "Аналоговая",
@@ -172,7 +172,7 @@
 	},
 	{
 		"id": 6,
-		"number": 110222,
+		"numberSystem": 110222,
 		"priority": "Особо важная",
 		"correspondent": "Колибри - Рубин",
 		"type": "Цифровая",
@@ -180,7 +180,7 @@
 	},
 	{
 		"id": 7,
-		"number": 110222,
+		"numberSystem": 110222,
 		"priority": "Особо важная",
 		"correspondent": "Колибри - Рубин",
 		"type": "Цифровая",
@@ -188,7 +188,7 @@
 	},
 	{
 		"id": 8,
-		"number": 110222,
+		"numberSystem": 110222,
 		"priority": "Обыкновенный",
 		"correspondent": "Колибри - Брус",
 		"type": "Аналоговая",
@@ -196,7 +196,7 @@
 	},
 	{
 		"id": 9,
-		"number": 110222,
+		"numberSystem": 110222,
 		"priority": "Особо важная",
 		"correspondent": "Колибри - Рубин",
 		"type": "Цифровая",
@@ -204,7 +204,7 @@
 	},
 	{
 		"id": 10,
-		"number": 1827,
+		"numberSystem": 1827,
 		"priority": "Обыкновенный",
 		"correspondent": "Колибри - Перископ",
 		"type": "Аналоговая",
@@ -212,7 +212,7 @@
 	},
 	{
 		"id": 11,
-		"number": 110222,
+		"numberSystem": 110222,
 		"priority": "Особо важная",
 		"correspondent": "Колибри - Рубин",
 		"type": "Цифровая",
@@ -220,7 +220,7 @@
 	},
 	{
 		"id": 12,
-		"number": 110222,
+		"numberSystem": 110222,
 		"priority": "Особо важная",
 		"correspondent": "Колибри - Рубин",
 		"type": "Цифровая",
@@ -228,7 +228,7 @@
 	},
 	{
 		"id": 13,
-		"number": 110222,
+		"numberSystem": 110222,
 		"priority": "Обыкновенный",
 		"correspondent": "Колибри - Брус",
 		"type": "Аналоговая",
@@ -236,7 +236,7 @@
 	},
 	{
 		"id": 14,
-		"number": 110222,
+		"numberSystem": 110222,
 		"priority": "Особо важная",
 		"correspondent": "Колибри - Рубин",
 		"type": "Цифровая",
@@ -244,7 +244,7 @@
 	},
 	{
 		"id": 15,
-		"number": 1827,
+		"numberSystem": 1827,
 		"priority": "Обыкновенный",
 		"correspondent": "Колибри - Перископ",
 		"type": "Аналоговая",
