@@ -17,8 +17,8 @@ function renderSystems(systemsArray) {
   systemsArray.forEach(function (item) {
     const systemHTML = `<div class="table__grid">
 	<div class="table__item">
-	<div>${item.id}</div>
-	<div class="number">${item.number}</div>
+	<div class="row-number"></div>
+	<div class="numberSystem">${item.numberSystem}</div>
 	<div>${item.priority}</div>
 	<div>${item.correspondent}</div>
 	<div>${item.type}</div>
@@ -51,7 +51,7 @@ function renderSystems(systemsArray) {
 			<div>Загрузка: 
 																		
 			</div>
-			<div class="state"> Состояние: ${item.state}</div
+			<div class="popup__state"> Состояние: ${item.state} </div
 			</div>
 		</div>
 	</div>	

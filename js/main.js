@@ -13,9 +13,11 @@ window.onload = function () {
   const system = document.querySelectorAll('.table__grid')
   const popupBG = document.querySelector('.popup__bg')
   const form = document.querySelector('.search-form')
-  const numbersOfSystems = document.querySelectorAll('.number')
+  const numbersOfSystems = document.querySelectorAll('.numberSystem')
   const filterOn = document.getElementById('filter-on')
   const filterOff = document.getElementById('filter-off')
+
+
 
   state.forEach((el) => {
     // Определяет цвет состояния объекта
@@ -43,7 +45,7 @@ window.onload = function () {
       })
     })
   }
-
+	
   function filter(ev) {
     ev.preventDefault()
     const input = document.querySelector('#system-search')
@@ -71,9 +73,9 @@ window.onload = function () {
       }
     })
   }
-
+	// Фильтры состояния checkbox start
   function filterState() {
-    const StateSet = new Set()
+    const StateSet = new Set() // Множество для хранения состояния нажатых checkbox
     filterOn.addEventListener('click', () => {
       state.forEach((el) => {
         let parentState = el.closest('.table__item')
@@ -87,7 +89,7 @@ window.onload = function () {
           parentState.classList.remove('hidden_check')
           StateSet.delete(el.innerHTML)
         }
-        if (StateSet.size == 2) {
+        if (StateSet.size == 2) { // При одновременном нажатии двух checkbox, сбрасывает их
           state.forEach((el) => {
             let parentState = el.closest('.table__item')
             parentState.classList.remove('hidden_check')
@@ -127,6 +129,8 @@ window.onload = function () {
       })
     })
   }
+	// Фильтры состояния checkbox end
+
 
   form.addEventListener('keyup', filter)
   form.addEventListener('keyup', filterReset)
