@@ -5,21 +5,25 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 		<title>Система мониторинга</title>
-		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/style.css">
 	</head>
 
 	<body>
-		<!-- <div id="p_preloader" class="preloader">
-			<div class="load">
-				<img src="/img/6ef4.gif" alt="" srcset="">
-			</div>
-		</div> -->
-		<!-- <div class="box"> -->
+		<style>
+			.state_on {
+				color: greenyellow;
+			}
+
+			.state_off {
+				color: red;
+			}
+		</style>
 		<div class="wrapper__1">
 			<h2>Система мониторинга систем передачи центра связи (СУС)</h2>
 			<form class="search-form" action="" method="GET">
-				<div class="search-form__inp"><label hidden for="system-search">Фильтр</label>
+				<div><label hidden for="system-search">Фильтр</label>
 					<input placeholder="Поиск..." type="search" name="system-search" id="system-search"
 						class="system-search">
 				</div>
@@ -45,11 +49,8 @@
 		</div>
 		</div>
 		<script>
-			/////////////////////////////MAIN-start///////////////////////////////////////
-
+			////////////////////////////MAIN-start////////////////////////////////////////////////
 			window.onload = function () {
-
-
 				const state = document.querySelectorAll('.state')
 				const system = document.querySelectorAll('.table__grid')
 				const popupBG = document.querySelector('.popup__bg')
@@ -57,8 +58,6 @@
 				const numbersOfSystems = document.querySelectorAll('.numberSystem')
 				const filterOn = document.getElementById('filter-on')
 				const filterOff = document.getElementById('filter-off')
-
-
 
 				state.forEach((el) => {
 					// Определяет цвет состояния объекта
@@ -171,20 +170,16 @@
 					})
 				}
 				// Фильтры состояния checkbox end
-
-
 				form.addEventListener('keyup', filter)
 				form.addEventListener('keyup', filterReset)
 				filterState()
 				popup()
 			}
-
-
-			/////////////////////////////MAIN-end///////////////////////////////////////////////////
+			////////////////////////////MAIN-end////////////////////////////////////////////////
 
 
 
-			/////////////////////////////RENDER_SISTEMS-start///////////////////////////////////////
+			///////////////////////////RENDER_SISTEMS-start/////////////////////////////////////
 			const systemsContainer = document.querySelector('#table-systems')
 
 			getSystems()
@@ -192,7 +187,7 @@
 			async function getSystems() {
 				//получаем массив из json в котором мы определили массив
 				//обязательно через await,необходимо достоверно получить данные
-				const response = await fetch('./js/sis.xml')
+				const response = await fetch('/sis.xml')
 				//присваиваем значение массива переменной
 				const systemsArray = await response.json()
 				//теперь передаем этоту переменную с массивом в другую функцию
@@ -203,53 +198,52 @@
 				//перебираем все элементы в массиве и вставляем их в шаблон
 				systemsArray.forEach(function (item) {
 					const systemHTML = `<div class="table__grid">
-					<div class="table__item">
-					<div class="row-number"></div>
-					<div class="numberSystem">${item.numberSystem}</div>
-					<div>${item.priority}</div>
-					<div>${item.correspondent}</div>
-					<div>${item.type}</div>
-					<div class="state">${item.state}</div>
-				</div>
-				<div class="popup__wrapper">
-					<div class="popup">
-						<div class="close">
-							<a class="close__img">
-								<img src="./img/close.png" alt="" / style="width:23px;height:23px;transition:0.4s;">
-								<style>
-								.close__img>img:hover{
-									transform:rotate(360deg);
-									transition:0.4s;
-								}
-								</style>
-							</a>
-						</div>
-						<div class="popup__content">
-							<div>Трасса: 
-							${item.cor1}
-							${item.SL1}
-							${item.cor2}
-							${item.SL2}
-							${item.cor3}
-							${item.SL3}
-							${item.cor4}																
+						<div class="table__item">
+						<div class="row-number"></div>
+						<div class="numberSystem">${item.numberSystem}</div>
+						<div>${item.priority}</div>
+						<div>${item.correspondent}</div>
+						<div>${item.type}</div>
+						<div class="state">${item.state}</div>
+					</div>
+					<div class="popup__wrapper">
+						<div class="popup">
+							<div class="close">
+								<a class="close__img">
+									<img src="/close.png" alt="" / style="width:23px;height:23px;transition:0.4s;">
+									<style>
+									.close__img>img:hover{
+										transform:rotate(360deg);
+										transition:0.4s;
+									}
+									</style>
+								</a>
 							</div>
-							<div class="popup__content-down">
-							<div>Загрузка: 
-																						
+							<div class="popup__content">
+								<div>Трасса: 
+								${item.cor1}
+								${item.SL1}
+								${item.cor2}
+								${item.SL2}
+								${item.cor3}
+								${item.SL3}
+								${item.cor4}																
+								</div>
+								<div class="popup__content-down">
+								<div>Загрузка: 
+																							
+								</div>
+								<div class="popup__state"> Состояние: ${item.state} </div
+								</div>
 							</div>
-							<div class="popup__state"> Состояние: ${item.state} </div
-							</div>
-						</div>
-					</div>	
-				</div>			
-				</div>`
+						</div>	
+					</div>			
+					</div>`
 					//вставляем шаблон в страницу(отрисовываем)
 					systemsContainer.insertAdjacentHTML('beforeend', systemHTML)
 				})
 			}
-
-		/////////////////////////////RENDER_SISTEMS-end///////////////////////////////////////
+			///////////////////////////RENDER_SISTEMS-end/////////////////////////////////////
 		</script>
 	</body>
 

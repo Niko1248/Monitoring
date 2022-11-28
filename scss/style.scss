@@ -9,7 +9,7 @@ body {
   font-size: 16px;
   background: #1d1c1c;
   overflow-x: hidden;
-	counter-reset: section;
+  counter-reset: section;
 }
 #p_preloader {
   background: #000;
@@ -33,16 +33,18 @@ body {
 .wrapper__1 {
   min-width: 15%;
   margin-right: 30px;
-	margin-bottom: 20px;
+  margin-bottom: 20px;
+
   h2 {
-		font-family: serif;
+    font-family: 'Roboto';
+    font-weight: 400;
     width: 90%;
     margin: 0 auto;
     text-align: center;
     padding-top: 30px;
-		margin-bottom: 10px;
+    margin-bottom: 10px;
     font-weight: 200;
-		font-size: 30px;
+    font-size: 30px;
   }
 }
 .main {
@@ -96,7 +98,7 @@ body {
   font-weight: 300;
   cursor: auto;
 }
-												// Классы popup start
+// Классы popup start
 .popup__bg {
   position: fixed;
   top: 0;
@@ -149,32 +151,40 @@ body {
 .popup__on {
   display: block;
 }
-													// Классы popup end
-													// Классы фильтров start
+// Классы popup end
+// Классы фильтров start
 .search-form {
-	padding-top: 20px;
-	width: 80%;
-	margin: 0 auto;
-	display: flex;
-	flex-direction: column;
+  padding-top: 20px;
+  width: 85%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 .system-search {
-	color: white;
-	border: none;
-	background: #000;
-	width: 40%;
-	height: 30px;
-	border-radius: 20px;
-	padding: 0 20px;
-	margin-bottom: 20px;
-	&::placeholder {
-		color: #444444;
-	}
+  color: white;
+  border: none;
+  background: #000;
+  width: 40%;
+  height: 30px;
+  border-radius: 20px;
+  padding: 0 20px;
+  margin-bottom: 20px;
+  &::placeholder {
+    color: #444444;
+  }
+}
+.search-form__inp {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  input {
+    max-width: 50%;
+  }
 }
 #filter-on,
 #filter-off {
-	background-color: #000;
-	margin-top: 10px;
+  background-color: #000;
+  margin-top: 10px;
 }
 .state_on {
   color: greenyellow;
@@ -190,8 +200,9 @@ body {
 }
 .hidden_check {
   display: none;
-}													// Классы фильтров end	
-.row-number::before{   		// CSS счетчик № п/п
-	counter-increment: section;
-	content: counter(section)".";
+} // Классы фильтров end
+.row-number::before {
+  // CSS счетчик № п/п
+  counter-increment: section;
+  content: counter(section) '.';
 }

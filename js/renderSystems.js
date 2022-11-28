@@ -5,7 +5,7 @@ getSystems()
 async function getSystems() {
   //получаем массив из json в котором мы определили массив
   //обязательно через await,необходимо достоверно получить данные
-  const response = await fetch('./js/systems.json')
+  const response = await fetch('./js/systems.xml')
   //присваиваем значение массива переменной
   const systemsArray = await response.json()
   //теперь передаем этоту переменную с массивом в другую функцию
