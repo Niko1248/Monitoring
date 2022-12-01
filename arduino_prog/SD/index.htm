@@ -59,6 +59,32 @@
 				const filterOn = document.getElementById('filter-on')
 				const filterOff = document.getElementById('filter-off')
 
+
+				/////////////////////////////////// Обработка Ajax start////////////////////////////////////////
+				setInterval(function () {
+					getPinInfo();
+				}, 2000);
+				<!------------------------------------------------------------->
+				function getPinInfo() {
+					var PinRequest = new XMLHttpRequest();
+					PinRequest.onreadystatechange = function () {
+						if (this.readyState == 4 && this.status == 200 && this.responseText != null) {
+
+
+
+							// тут подставляем данные из полученного от сервера ответа в ДОМ
+							let stateN = document.querySelectorAll('.state')
+							stateN.forEach((el) => {
+								el.innerHTML = this.responseText;
+								console.log(this.responseText);//для контроля
+							})
+						}
+					};
+					PinRequest.open("GET", "readPinInfo", true);
+					PinRequest.send();
+				}
+				/////////////////////////////////// Обработка Ajax end////////////////////////////////////////
+
 				state.forEach((el) => {
 					// Определяет цвет состояния объекта
 					if (el.innerHTML == 'Авария') {
