@@ -3,19 +3,22 @@
 #include <Ethernet.h>
 #include <SD.h>
 #define REQ_BUF_SZ 20
-
+#define FIRST_PIN 40
+#define LAST_PIN 47
 
 File webFile;
 char HTTP_req[REQ_BUF_SZ] = { 0 };  // buffered HTTP request stored as null terminated string
 char req_index = 0;                 // index into HTTP_req buffer
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
-IPAddress ip(192, 168, 0, 111);
+IPAddress ip(192, 168, 100, 2);
 
 
 EthernetServer server(80);
-byte D49 = 49;
+
 void setup() {
-  pinMode(49, INPUT);// обязательно все входные пины инпутим
+  for (int i = FIRST_PIN; i <= LAST_PIN; i++){    // Установил все пины в input
+    pinMode(i, INPUT);
+  }
   SD.begin(4);
   Ethernet.begin(mac, ip);
   server.begin();
@@ -54,18 +57,6 @@ void loop() {
               client.println("HTTP/1.1 200 OK");
               client.println();
             }
-          } else if (StrContains(HTTP_req, "GET /rendSis.js")) {
-            webFile = SD.open("rendSis.js");
-            if (webFile) {
-              client.println("HTTP/1.1 200 OK");
-              client.println();
-            }
-          } else if (StrContains(HTTP_req, "GET /main.js")) {
-            webFile = SD.open("main.js");
-            if (webFile) {
-              client.println("HTTP/1.1 200 OK");
-              client.println();
-            }
           } else if (StrContains(HTTP_req, "GET /sis.xml")) {
             webFile = SD.open("sis.xml");
             if (webFile) {
@@ -100,20 +91,15 @@ void loop() {
           /////////////////////////////////////Вот тут начинается Ajax///////////////////////////////////////////////
           else if (StrContains(HTTP_req, "readPinInfo")) { //если реквест содержит запрос readPinInfo то...     кстати, readPinInfo это и есть функция ответa ajax на js в index.htm 
 
-            bool Dr49 = digitalRead(D49); // тип bool  имеет только два значения 0,1 поэтому весит меньше любой другой переменной 
-
-
-            client.println(Dr49);// передаем значение 49го пина
-            Serial.print(Dr49);// для контроля просто замутил
-
-
-
-
+            for (int i = FIRST_PIN; i <= LAST_PIN; i++){
+              bool Dr = digitalRead(i);
+              client.print(Dr);
+            }
           }
           /////////////////////////////////////Вот заканчивается Ajax///////////////////////////////////////////////
           if (webFile) {
             while (webFile.available()) {
-              client.write(webFile.read());  // отправляем готовые данные на стреницу браузера
+              client.write(webFile.read());  // отправляем готовые данные на страницу браузера
             }
             webFile.close();
           }
