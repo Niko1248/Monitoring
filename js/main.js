@@ -1,13 +1,11 @@
 window.onload = function () {
-  /* setTimeout(function () {
-    var preloader = document.getElementById('p_preloader')
-    if (!preloader.classList.contains('done')) {
-      preloader.style.visibility = 'hidden'
-      preloader.style.opacity = '0'
-      document.querySelector('body').style.overflowX = 'visible'
-      document.querySelector('body').style.overflowY = 'visible'
-    }
-  }, 1500) */
+  function load() {
+    let preloader = document.getElementsByClassName('preloader')
+    preloader.style.visibility = 'hidden'
+    preloader.style.opacity = '0'
+    document.querySelector('body').style.overflowX = 'visible'
+    document.querySelector('body').style.overflowY = 'visible'
+  }
 
   const state = document.querySelectorAll('.state')
   const system = document.querySelectorAll('.table__grid')
@@ -134,4 +132,6 @@ window.onload = function () {
   form.addEventListener('keyup', filterReset)
   filterState()
   popup()
+  load()
 }
+alert('ddd')

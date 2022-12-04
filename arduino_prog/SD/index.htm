@@ -11,6 +11,11 @@
 	</head>
 
 	<body>
+		<div id="p_preloader" class="preloader">
+			<div class="load">
+				<div class="inload"></div>
+			</div>
+		</div>
 		<style>
 			.state_on {
 				color: greenyellow;
@@ -51,6 +56,8 @@
 		<script>
 			////////////////////////////MAIN-start////////////////////////////////////////////////
 			window.onload = function () {
+				load();
+
 				const state = document.querySelectorAll('.state')
 				const system = document.querySelectorAll('.table__grid')
 				const popupState = document.querySelectorAll('.popup__state')
@@ -70,18 +77,18 @@
 					var PinRequest = new XMLHttpRequest();
 					PinRequest.onreadystatechange = function () {
 						if (this.readyState == 4 && this.status == 200 && this.responseText != null) {
-							
+
 							stateArray = [];			// В этот массив передаются данные о состоянии пинов
 							stateArray += this.responseText;
 							numbersOfSystems.forEach((el, index, arr) => {
 								let systemRow = el.closest('.table__item');
 								let systemState = systemRow.querySelector('.state');
-								if (stateArray[index] == 0){
+								if (stateArray[index] == 0) {
 									systemState.innerText = 'В работе';
 									systemState.classList.remove('state_on')
 									systemState.classList.remove('state_off')
 									systemState.classList.add('state_on')
-								}else if (stateArray[index] == 1){
+								} else if (stateArray[index] == 1) {
 									systemState.innerText = 'Авария';
 									systemState.classList.remove('state_on')
 									systemState.classList.remove('state_off')
@@ -89,12 +96,12 @@
 								}
 							});
 							popupState.forEach((el, index, arr) => {
-								if (stateArray[index] == 0){
+								if (stateArray[index] == 0) {
 									el.innerText = 'В работе';
 									el.classList.remove('state_on')
 									el.classList.remove('state_off')
 									el.classList.add('state_on')
-								}else if (stateArray[index] == 1){
+								} else if (stateArray[index] == 1) {
 									el.innerText = 'Авария';
 									el.classList.remove('state_on')
 									el.classList.remove('state_off')
@@ -104,7 +111,7 @@
 						}
 					};
 					PinRequest.open("GET", "readPinInfo", true);
-					PinRequest.send();	
+					PinRequest.send();
 				}
 				/////////////////////////////////// Обработка Ajax end////////////////////////////////////////
 
@@ -118,7 +125,7 @@
 							popup.classList.add('popup__on')
 							let popupClose = item.querySelector('.close')
 
-							popupClose.addEventListener('click', () => {
+							popupClose.addEventListener('click', (event) => {
 								event.stopPropagation() // Запрет всплытия, иначе при нажатии потоврно навешивает класс
 								popupBG.classList.remove('popup__on')
 								popup.classList.remove('popup__on')
@@ -219,6 +226,13 @@
 				form.addEventListener('keyup', filterReset)
 				filterState()
 				popup()
+			}
+
+			function load() {
+				let preloader = document.querySelector('.preloader')
+				preloader.classList.toggle('remove')
+				document.querySelector('body').style.overflowX = 'visible'
+				document.querySelector('body').style.overflowY = 'visible'
 			}
 			////////////////////////////MAIN-end////////////////////////////////////////////////
 

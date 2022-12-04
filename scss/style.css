@@ -1,84 +1,16 @@
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -93,17 +25,8 @@ video {
 }
 
 /* HTML5 display-role reset for older browsers */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
@@ -111,21 +34,17 @@ body {
   line-height: 1;
 }
 
-ol,
-ul {
+ol, ul {
   list-style: none;
 }
 
-blockquote,
-q {
+blockquote, q {
   quotes: none;
 }
 
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: '';
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
   content: none;
 }
 
@@ -134,15 +53,15 @@ table {
   border-spacing: 0;
 }
 
-input[type='search']::-webkit-search-cancel-button,
-input[type='search']::-webkit-search-decoration,
-input[type='search']::-webkit-search-results-button,
-input[type='search']::-webkit-search-results-decoration {
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration,
+input[type=search]::-webkit-search-results-button,
+input[type=search]::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
 }
 
-input[type='search'] {
+input[type=search] {
   -webkit-appearance: none;
   -moz-appearance: none;
   box-sizing: content-box;
@@ -300,9 +219,9 @@ select {
  *    Known issue: inner spacing remains in IE 6.
  */
 button,
-html input[type='button'],
-input[type='reset'],
-input[type='submit'] {
+html input[type=button],
+input[type=reset],
+input[type=submit] {
   -webkit-appearance: button; /* 2 */
   cursor: pointer; /* 3 */
   *overflow: visible; /* 4 */
@@ -322,8 +241,8 @@ html input[disabled] {
  * 3. Remove excess padding in IE 7.
  *    Known issue: excess padding remains in IE 6.
  */
-input[type='checkbox'],
-input[type='radio'] {
+input[type=checkbox],
+input[type=radio] {
   box-sizing: border-box; /* 1 */
   padding: 0; /* 2 */
   *height: 13px; /* 3 */
@@ -335,7 +254,7 @@ input[type='radio'] {
  * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
  *    (include `-moz` to future-proof).
  */
-input[type='search'] {
+input[type=search] {
   -webkit-appearance: textfield; /* 1 */ /* 2 */
   box-sizing: content-box;
 }
@@ -344,8 +263,8 @@ input[type='search'] {
  * Remove inner padding and search cancel button in Safari 5 and Chrome
  * on OS X.
  */
-input[type='search']::-webkit-search-cancel-button,
-input[type='search']::-webkit-search-decoration {
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -414,9 +333,7 @@ textarea {
   padding: 0.2em 0;
 }
 
-*,
-*:before,
-*:after {
+*, *:before, *:after {
   box-sizing: border-box;
 }
 
@@ -436,7 +353,7 @@ textarea {
   font-weight: 300;
 }
 body {
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-style: normal;
   font-weight: 100;
   color: white;
@@ -446,111 +363,109 @@ body {
   counter-reset: section;
 }
 
-.preloader {
-  transition: 1s;
+/* .preloader {
+  background: #000;
   position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  background: rgb(0, 0, 0);
-  z-index: 10000;
-  transition: 2s all;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9;
   visibility: visible;
-  opacity: 1;
-}
-
-.load {
-  -webkit-animation: 2s loading infinite linear;
-  animation: 2s loading infinite linear;
-  width: 175px;
-  height: 175px;
-  border-radius: 50%;
-  border: 3px solid #f6eded;
-  border-top-color: rgb(120, 118, 118);
-  filter: drop-shadow(0px 0px 10px white);
-  z-index: 10001;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.inload {
-  -webkit-animation: 2s inloading infinite linear;
-  animation: 5s inloading infinite linear;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  border-top-color: rgb(109, 99, 99);
-  z-index: 10001;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.done {
-  visibility: hidden;
-  opacity: 0;
-}
-
-@-webkit-keyframes loading {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-    filter: drop-shadow(0px 0px 35px white);
-  }
-  50% {
-    filter: drop-shadow(0px 0px 0px rgb(255, 255, 255));
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-    filter: drop-shadow(0px 0px 35px rgb(255, 255, 255));
-  }
-}
-
-@keyframes loading {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-    filter: drop-shadow(0px 0px 35px white);
-  }
-  50% {
-    filter: drop-shadow(0px 0px 0px rgb(255, 255, 255));
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-    filter: drop-shadow(0px 0px 35px rgb(255, 255, 255));
-  }
-}
-@-webkit-keyframes inloading {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  50% {
-    transform: translate(-50%, -50%) rotate(0deg);
-    border-radius: 20%;
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
-@keyframes inloading {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  50% {
-    transform: translate(-50%, -50%) rotate(0deg);
-    border-radius: 20%;
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
 }
 .remove {
   visibility: hidden;
   opacity: 0;
   transition: 2s;
+}
+ */
+.preloader {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  z-index: 1000;
+  transition: all 0.09s ease-out;
+}
+
+.preloader--hide {
+  opacity: 0;
+  visibility: hidden;
+  z-index: -1;
+}
+
+.preloader__loader,
+.preloader__percents {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.preloader__percents {
+  font-family: Arial, sans-serif;
+  font-size: 21px;
+  font-weight: bold;
+}
+
+@-webkit-keyframes ldio-zgxx64th47 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes ldio-zgxx64th47 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+.ldio-zgxx64th47 div {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: 10px solid #10b3e0;
+  border-top-color: transparent;
+  border-radius: 50%;
+}
+
+.ldio-zgxx64th47 div {
+  -webkit-animation: ldio-zgxx64th47 1s linear infinite;
+          animation: ldio-zgxx64th47 1s linear infinite;
+  top: 100px;
+  left: 100px;
+}
+
+.loadingio-spinner-rolling-wopxwk46ahe {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  overflow: hidden;
+  background: rgba(241, 242, 243, 0);
+}
+
+.ldio-zgxx64th47 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  transform-origin: 0 0;
+}
+
+.ldio-zgxx64th47 div {
+  box-sizing: content-box;
 }
 
 .box {
@@ -564,7 +479,7 @@ body {
   margin-bottom: 20px;
 }
 .wrapper__1 h2 {
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-weight: 400;
   width: 90%;
   margin: 0 auto;
@@ -640,7 +555,7 @@ body {
   width: 100%;
   display: none;
   -webkit-backdrop-filter: blur(2px);
-  backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
   z-index: 3;
 }
 
@@ -756,5 +671,5 @@ body {
 
 .row-number::before {
   counter-increment: section;
-  content: counter(section) '.';
+  content: counter(section) ".";
 }

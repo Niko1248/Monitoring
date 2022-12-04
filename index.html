@@ -10,12 +10,17 @@
 	</head>
 
 	<body>
-		<!-- <div id="p_preloader" class="preloader">
+		<div id="p_preloader" class="preloader">
 			<div class="load">
-				<img src="/img/6ef4.gif" alt="" srcset="">
+				<div class="inload"></div>
 			</div>
-		</div> -->
-		<!-- <div class="box"> -->
+		</div>
+
+
+
+
+
+
 		<div class="wrapper__1">
 			<h2>Система мониторинга систем передачи центра связи (СУС)</h2>
 			<form class="search-form" action="" method="GET">
@@ -47,7 +52,9 @@
 		<script>
 			/////////////////////////////MAIN-start///////////////////////////////////////
 
+
 			window.onload = function () {
+				load();
 
 
 				const state = document.querySelectorAll('.state')
@@ -78,7 +85,7 @@
 							popup.classList.add('popup__on')
 							let popupClose = item.querySelector('.close')
 							console.log(popupClose)
-							popupClose.addEventListener('click', () => {
+							popupClose.addEventListener('click', (event) => {
 								event.stopPropagation() // Запрет всплытия, иначе при нажатии потоврно навешивает класс
 								popupBG.classList.remove('popup__on')
 								popup.classList.remove('popup__on')
@@ -173,13 +180,19 @@
 				// Фильтры состояния checkbox end
 
 
-				form.addEventListener('keyup', filter)
-				form.addEventListener('keyup', filterReset)
-				filterState()
-				popup()
+				form.addEventListener('keyup', filter);
+				form.addEventListener('keyup', filterReset);
+				filterState();
+				popup();
+
 			}
 
-
+			function load() {
+				let preloader = document.querySelector('.preloader')
+				preloader.classList.toggle('remove')
+				document.querySelector('body').style.overflowX = 'visible'
+				document.querySelector('body').style.overflowY = 'visible'
+			}
 			/////////////////////////////MAIN-end///////////////////////////////////////////////////
 
 
