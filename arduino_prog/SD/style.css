@@ -422,17 +422,17 @@ textarea {
 
 @font-face {
   font-family: Roboto;
-  src: url(/fonts/R_EL.ttf);
+  src: url(/R_EL.ttf);
   font-weight: 100;
 }
 @font-face {
   font-family: Roboto;
-  src: url(/fonts/R_L.ttf);
+  src: url(/R_L.ttf);
   font-weight: 200;
 }
 @font-face {
   font-family: Roboto;
-  src: url(/fonts/R_M.ttf);
+  src: url(/R_M.ttf);
   font-weight: 300;
 }
 body {
