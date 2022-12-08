@@ -66,7 +66,9 @@
 				const numbersOfSystems = document.querySelectorAll('.numberSystem')
 				const filterOn = document.getElementById('filter-on')
 				const filterOff = document.getElementById('filter-off')
-
+				const systemActive = new Set()
+				const systemNonActive = new Set()
+				
 
 				/////////////////////////////////// Обработка Ajax start////////////////////////////////////////
 				setInterval(function () {
@@ -84,11 +86,13 @@
 								let systemRow = el.closest('.table__item');
 								let systemState = systemRow.querySelector('.state');
 								if (stateArray[index] == 0) {
+									systemActive.add(el)
 									systemState.innerText = 'В работе';
 									systemState.classList.remove('state_on')
 									systemState.classList.remove('state_off')
 									systemState.classList.add('state_on')
 								} else if (stateArray[index] == 1) {
+									systemNonActive.add(el);
 									systemState.innerText = 'Авария';
 									systemState.classList.remove('state_on')
 									systemState.classList.remove('state_off')
@@ -108,10 +112,15 @@
 									el.classList.add('state_off')
 								}
 							});
+							console.log(systemActive);
+							console.log(systemNonActive);
 						}
 					};
 					PinRequest.open("GET", "readPinInfo", true);
 					PinRequest.send();
+					filterState();
+					systemActive.clear()
+					systemNonActive.clear()
 				}
 				/////////////////////////////////// Обработка Ajax end////////////////////////////////////////
 
@@ -163,24 +172,58 @@
 						}
 					})
 				}
-				// Фильтры состояния checkbox start
+////////////////////////////////////////////// Фильтры состояния checkbox start///////////////////////////////
 				function filterState() {
+
+					//Когда идут реквесты, каждый раз сбрасывает все классы
+					//И в зависимости от нажатой кнопки скрывает ненужное
+
 					const StateSet = new Set() // Множество для хранения состояния нажатых checkbox
-					filterOn.addEventListener('click', () => {
-						state.forEach((el) => {
+					if(filterOn.checked){				
+							system.forEach((e) =>{
+							e.classList.remove('hidden_check')
+						})
+					}else if(filterOff.checked){		
+							system.forEach((e) =>{
+							let parentState = e.closest('.table__grid')
+							e.classList.remove('hidden_check')
+						})
+					}	
+					if(filterOn.checked){
+						systemNonActive.forEach((el) => {
 							let parentState = el.closest('.table__grid')
-							if (filterOn.checked && el.innerHTML == filterOff.value) {
+							console.log(parentState);
+							parentState.classList.add('hidden_check')
+						})
+					}
+					if(filterOff.checked){
+						systemActive.forEach((el) => {
+							let parentState = el.closest('.table__grid')
+							console.log(parentState);
+							parentState.classList.add('hidden_check')
+						})
+					}
+
+					//Здесь все завязано на кнопку "В работе", в соответствии с нажатой кнопкой скрывает ненужное
+					//Когда отжал кнопку, возвращает
+
+					filterOn.addEventListener('click', () => {
+						system.forEach((e) =>{
+							e.classList.remove('hidden_check')
+						})
+						systemNonActive.forEach((el) => {
+							let parentState = el.closest('.table__grid')
+							if(filterOn.checked){
+								console.log(parentState);
 								parentState.classList.add('hidden_check')
-								StateSet.add(el.innerHTML)
-							} else if (
-								filterOn.checked === false &&
-								el.innerHTML == filterOff.value
-							) {
+								StateSet.add(1)   			//при нажатии на On добавляем 1 в множество
+							}else if (filterOn.checked === false){
+								console.log(parentState);
 								parentState.classList.remove('hidden_check')
-								StateSet.delete(el.innerHTML)
-							}
+								StateSet.delete(1)			//при отжатии убираем 1 из множестваа
+							}							
 							if (StateSet.size == 2) { // При одновременном нажатии двух checkbox, сбрасывает их
-								state.forEach((el) => {
+								system.forEach((el) => {
 									let parentState = el.closest('.table__grid')
 									parentState.classList.remove('hidden_check')
 								})
@@ -192,21 +235,25 @@
 							}
 						})
 					})
+					//Здесь все завязано на кнопку "Авария", в соответствии с нажатой кнопкой скрывает ненужное
+					//Когда отжал кнопку, возвращает
 					filterOff.addEventListener('click', () => {
-						state.forEach((el) => {
+						system.forEach((e) =>{
+							e.classList.remove('hidden_check')
+						})
+						systemActive.forEach((el) => {
 							let parentState = el.closest('.table__grid')
-							if (filterOff.checked && el.innerHTML == filterOn.value) {
+							if(filterOff.checked){
+								console.log(parentState);
 								parentState.classList.add('hidden_check')
-								StateSet.add(el.innerHTML)
-							} else if (
-								filterOff.checked === false &&
-								el.innerHTML == filterOn.value
-							) {
+								StateSet.add(2)
+							}else if (filterOff.checked === false){
+								console.log(parentState);
 								parentState.classList.remove('hidden_check')
-								StateSet.delete(el.innerHTML)
-							}
-							if (StateSet.size == 2) {
-								state.forEach((el) => {
+								StateSet.delete(2)
+							}							
+							if (StateSet.size == 2) { // При одновременном нажатии двух checkbox, сбрасывает их
+								system.forEach((el) => {
 									let parentState = el.closest('.table__grid')
 									parentState.classList.remove('hidden_check')
 								})
@@ -219,12 +266,12 @@
 						})
 					})
 				}
-				// Фильтры состояния checkbox end
+////////////////////////////////////////////// Фильтры состояния checkbox end///////////////////////////////
 				////////////////////////////////////// Filters end///////////////////////////////////////////
 
 				form.addEventListener('keyup', filter)
 				form.addEventListener('keyup', filterReset)
-				filterState()
+
 				popup()
 			}
 

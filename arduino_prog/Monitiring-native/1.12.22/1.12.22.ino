@@ -10,7 +10,7 @@ File webFile;
 char HTTP_req[REQ_BUF_SZ] = { 0 };  // buffered HTTP request stored as null terminated string
 char req_index = 0;                 // index into HTTP_req buffer
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
-IPAddress ip(192, 168, 0, 101);
+IPAddress ip(192, 168, 0, 110);
 
 
 EthernetServer server(80);
