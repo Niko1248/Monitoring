@@ -32,8 +32,25 @@
 					<input placeholder="Поиск..." type="search" name="system-search" id="system-search"
 						class="system-search">
 				</div>
-				<div><input type="checkbox" name="state-on" value="В работе" id="filter-on"> Исправные</div>
-				<div><input type="checkbox" name="state-off" value="Авария" id="filter-off"> Неисправные</div>
+				<div class="checkbox">
+					<div class="checkbox__wrap">
+						<div class="toggle-pill-dark">
+							<input type="checkbox" id="filter-on" name="state-on" value="В работе">
+							<label for="filter-on"></label>
+						</div>
+						<div class="checkbox__name">Исправные</div>
+					</div>
+					<div class="checkbox__wrap">
+						<div class="toggle-pill-dark">
+							<input type="checkbox" id="filter-off" name="state-off" value="Авария">
+							<label for="filter-off"></label>
+						</div>
+						<div class="checkbox__name">Неисправные</div>
+					</div>
+				</div>
+				
+				<!-- <div><input type="checkbox" name="state-on" value="В работе" id="filter-on"> Исправные</div>
+				<div><input type="checkbox" name="state-off" value="Авария" id="filter-off"> Неисправные</div> -->
 			</form>
 		</div>
 		<div class="main">
@@ -185,7 +202,6 @@
 						})
 					}else if(filterOff.checked){		
 							system.forEach((e) =>{
-							let parentState = e.closest('.table__grid')
 							e.classList.remove('hidden_check')
 						})
 					}	
