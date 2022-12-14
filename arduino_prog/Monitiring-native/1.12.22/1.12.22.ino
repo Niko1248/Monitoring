@@ -10,13 +10,13 @@ File webFile;
 char HTTP_req[REQ_BUF_SZ] = { 0 };  // buffered HTTP request stored as null terminated string
 char req_index = 0;                 // index into HTTP_req buffer
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
-IPAddress ip(192, 168, 0, 110);
+IPAddress ip(192, 168, 1, 110);
 
 
 EthernetServer server(80);
 
 void setup() {
-  for (int i = FIRST_PIN; i <= LAST_PIN; i++){    // Установил все пины в input
+  for (int i = FIRST_PIN; i <= LAST_PIN; i++) {  // Установил все пины в input
     pinMode(i, INPUT);
   }
   SD.begin(4);
@@ -26,20 +26,20 @@ void setup() {
 
 
 void loop() {
- 
+
   EthernetClient client = server.available();
   if (client) {
     // если сервер поднят
     boolean currentLineIsBlank = true;
-    while (client.connected()) { // и мы подключились
+    while (client.connected()) {  // и мы подключились
       if (client.available()) {
-        char c = client.read(); //присваиваем реквесты переменной с
+        char c = client.read();  //присваиваем реквесты переменной с
         if (req_index < (REQ_BUF_SZ - 1)) {
           HTTP_req[req_index] = c;  // читаем посимвольно запрос
           req_index++;
         }
-        if (c == '\n' && currentLineIsBlank) { // если символы в запросе кончились то
-          if (StrContains(HTTP_req, "GET / ") || StrContains(HTTP_req, "GET /index.htm")) {// содердит ли реквест GET /index.htm ?
+        if (c == '\n' && currentLineIsBlank) {                                               // если символы в запросе кончились то
+          if (StrContains(HTTP_req, "GET / ") || StrContains(HTTP_req, "GET /index.htm")) {  // содердит ли реквест GET /index.htm ?
             client.println("HTTP/1.1 200 OK");
             client.println("Content-Type: text/html");
             client.println("Connnection: close");
@@ -87,11 +87,17 @@ void loop() {
               client.println("HTTP/1.1 200 OK");
               client.println();
             }
+          } else if (StrContains(HTTP_req, "GET /alert.ogg")) {
+            webFile = SD.open("alert.ogg");
+            if (webFile) {
+              client.println("HTTP/1.1 200 OK");
+              client.println();
+            }
           }
           /////////////////////////////////////Вот тут начинается Ajax///////////////////////////////////////////////
-          else if (StrContains(HTTP_req, "readPinInfo")) { //если реквест содержит запрос readPinInfo то...     кстати, readPinInfo это и есть функция ответa ajax на js в index.htm 
+          else if (StrContains(HTTP_req, "readPinInfo")) {  //если реквест содержит запрос readPinInfo то...     кстати, readPinInfo это и есть функция ответa ajax на js в index.htm
 
-            for (int i = FIRST_PIN; i <= LAST_PIN; i++){
+            for (int i = FIRST_PIN; i <= LAST_PIN; i++) {
               bool Dr = digitalRead(i);
               client.print(Dr);
             }

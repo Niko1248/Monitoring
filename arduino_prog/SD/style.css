@@ -459,9 +459,9 @@ body {
   visibility: visible;
   opacity: 1;
 }
-.preloader__percent{
-	position: absolute;
-	left: 50%;
+.preloader__percent {
+  position: absolute;
+  left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
@@ -813,11 +813,71 @@ body {
   -webkit-transform: rotate(295deg);
   transform: rotate(295deg);
 }
-<<<<<<< Updated upstream
-.checkbox__name{
-	margin-left: 10px;
-=======
 .checkbox__name {
   margin-left: 10px;
->>>>>>> Stashed changes
+}
+/* аудио иконка */
+.wrapper_audio {
+  cursor: pointer;
+  display: flex;
+  width: 40px;
+  height: 50px;
+  align-items: center;
+  box-sizing: border-box;
+  transition: 0.3s;
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
+}
+.box1 {
+  border: 2px solid rgb(165, 161, 161);
+  height: 10px;
+  width: 9px;
+}
+.box2 {
+  background: rgb(165, 161, 161);
+  border-radius: 2px;
+  height: 19px;
+  width: 10px;
+  clip-path: polygon(0 77%, 0 22%, 100% 0, 100% 100%);
+}
+.wrapper_audio::after {
+  content: '';
+  display: block;
+  height: 8px;
+  width: 10px;
+  border-right: 1px solid rgb(165, 161, 161);
+  border-radius: 40%;
+  transform: translateX(0);
+  transition: 0.3s;
+}
+.wrapper_audio::before {
+  content: '';
+  display: block;
+  height: 15px;
+  width: 10px;
+  border-right: 1px solid rgb(165, 161, 161);
+  border-radius: 50%;
+  transform: translateX(35px);
+  transition: 0.3s;
+}
+.off.wrapper_audio::after {
+  content: '';
+  transition: 0.3s;
+  display: block;
+  height: 15px;
+  width: 10px;
+  border-right: 2px solid rgb(119, 73, 73);
+  border-radius: 0;
+  transform: translate(2px, -3px) rotate(45deg);
+}
+.off.wrapper_audio::before {
+  content: '';
+  transition: 0.3s;
+  display: block;
+  height: 15px;
+  width: 10px;
+  border-right: 2px solid rgb(119, 73, 73);
+  border-radius: 0;
+  transform: translate(31px, 3px) rotate(-45deg);
 }
