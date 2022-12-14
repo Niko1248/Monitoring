@@ -42,7 +42,7 @@
 						<div class="checkbox__name">Неисправные</div>
 					</div>
 				</div>
-				
+
 				<!-- <div><input type="checkbox" name="state-on" value="В работе" id="filter-on"> Исправные</div>
 				<div><input type="checkbox" name="state-off" value="Авария" id="filter-off"> Неисправные</div> -->
 			</form>
@@ -187,34 +187,34 @@
 					const input = document.querySelector('#system-search')
 					console.log(input.value);
 					console.log(input.value.toLowerCase());
-					if(Number(input.value)){
+					if (Number(input.value)) {
 						console.log(input.value);
 						let inputValue = input.value.replace(/\D/g, '') // Получает только цифры введенные в поле поиска
 						console.log(inputValue);
 						numbersOfSystems.forEach((item) => {
-						let numberSystem = item.innerHTML // Получаем номер системы
-						let parentNumber = item.closest('.table__grid') // Ищем родителя чтобы скрыть другие
-						if (numberSystem.includes(inputValue)) {
-							parentNumber.classList.add('.show_search')
-							parentNumber.classList.remove('.hidden_search')
-						} else {
-							parentNumber.classList.add('hidden_search')
-							parentNumber.classList.remove('show_search')
-						}
+							let numberSystem = item.innerHTML // Получаем номер системы
+							let parentNumber = item.closest('.table__grid') // Ищем родителя чтобы скрыть другие
+							if (numberSystem.includes(inputValue)) {
+								parentNumber.classList.add('.show_search')
+								parentNumber.classList.remove('.hidden_search')
+							} else {
+								parentNumber.classList.add('hidden_search')
+								parentNumber.classList.remove('show_search')
+							}
 						})
-					}else{
+					} else {
 						console.log(input.value);
 						let inputValue = input.value.replace(/\d/g, '') // Получает только цифры введенные в поле поиска
 						console.log(inputValue);
 						correspondents.forEach((item) => {
-						let correspondent = item.innerHTML.toLowerCase() // Получаем корреспондента
-						let parentCorrespondent = item.closest('.table__grid') // Ищем родителя чтобы скрыть другие
-						if (correspondent.includes(inputValue.toLowerCase())) {
-							parentCorrespondent.classList.add('.show_search')
-							parentCorrespondent.classList.remove('.hidden_search')
-						} else {
-							parentCorrespondent.classList.add('hidden_search')
-							parentCorrespondent.classList.remove('show_search')
+							let correspondent = item.innerHTML.toLowerCase() // Получаем корреспондента
+							let parentCorrespondent = item.closest('.table__grid') // Ищем родителя чтобы скрыть другие
+							if (correspondent.includes(inputValue.toLowerCase())) {
+								parentCorrespondent.classList.add('.show_search')
+								parentCorrespondent.classList.remove('.hidden_search')
+							} else {
+								parentCorrespondent.classList.add('hidden_search')
+								parentCorrespondent.classList.remove('show_search')
 							}
 						})
 					}
@@ -238,30 +238,30 @@
 						}
 					})
 				}
-////////////////////////////////////////////// Фильтры состояния checkbox start///////////////////////////////
+				////////////////////////////////////////////// Фильтры состояния checkbox start///////////////////////////////
 				function filterState() {
 
 					//Когда идут реквесты, каждый раз сбрасывает все классы
 					//И в зависимости от нажатой кнопки скрывает ненужное
 
 					const StateSet = new Set() // Множество для хранения состояния нажатых checkbox
-					if(filterOn.checked){				
-							system.forEach((e) =>{
+					if (filterOn.checked) {
+						system.forEach((e) => {
 							e.classList.remove('hidden_check')
 						})
-					}else if(filterOff.checked){		
-							system.forEach((e) =>{
+					} else if (filterOff.checked) {
+						system.forEach((e) => {
 							e.classList.remove('hidden_check')
 						})
-					}	
-					if(filterOn.checked){
+					}
+					if (filterOn.checked) {
 						systemNonActive.forEach((el) => {
 							let parentState = el.closest('.table__grid')
 							console.log(parentState);
 							parentState.classList.add('hidden_check')
 						})
 					}
-					if(filterOff.checked){
+					if (filterOff.checked) {
 						systemActive.forEach((el) => {
 							let parentState = el.closest('.table__grid')
 							console.log(parentState);
@@ -273,20 +273,20 @@
 					//Когда отжал кнопку, возвращает
 
 					filterOn.addEventListener('click', () => {
-						system.forEach((e) =>{
+						system.forEach((e) => {
 							e.classList.remove('hidden_check')
 						})
 						systemNonActive.forEach((el) => {
 							let parentState = el.closest('.table__grid')
-							if(filterOn.checked){
+							if (filterOn.checked) {
 								console.log(parentState);
 								parentState.classList.add('hidden_check')
 								StateSet.add(1)   			//при нажатии на On добавляем 1 в множество
-							}else if (filterOn.checked === false){
+							} else if (filterOn.checked === false) {
 								console.log(parentState);
 								parentState.classList.remove('hidden_check')
 								StateSet.delete(1)			//при отжатии убираем 1 из множестваа
-							}							
+							}
 							if (StateSet.size == 2) { // При одновременном нажатии двух checkbox, сбрасывает их
 								system.forEach((el) => {
 									let parentState = el.closest('.table__grid')
@@ -303,20 +303,20 @@
 					//Здесь все завязано на кнопку "Авария", в соответствии с нажатой кнопкой скрывает ненужное
 					//Когда отжал кнопку, возвращает
 					filterOff.addEventListener('click', () => {
-						system.forEach((e) =>{
+						system.forEach((e) => {
 							e.classList.remove('hidden_check')
 						})
 						systemActive.forEach((el) => {
 							let parentState = el.closest('.table__grid')
-							if(filterOff.checked){
+							if (filterOff.checked) {
 								console.log(parentState);
 								parentState.classList.add('hidden_check')
 								StateSet.add(2)
-							}else if (filterOff.checked === false){
+							} else if (filterOff.checked === false) {
 								console.log(parentState);
 								parentState.classList.remove('hidden_check')
 								StateSet.delete(2)
-							}							
+							}
 							if (StateSet.size == 2) { // При одновременном нажатии двух checkbox, сбрасывает их
 								system.forEach((el) => {
 									let parentState = el.closest('.table__grid')
@@ -331,7 +331,7 @@
 						})
 					})
 				}
-////////////////////////////////////////////// Фильтры состояния checkbox end///////////////////////////////
+				////////////////////////////////////////////// Фильтры состояния checkbox end///////////////////////////////
 				////////////////////////////////////// Filters end///////////////////////////////////////////
 
 				form.addEventListener('keyup', filter)
@@ -383,7 +383,7 @@
 						<div class="popup">
 							<div class="close">
 								<a class="close__img">
-									<img src="/close.png" alt="" / style="width:23px;height:23px;transition:0.4s;">
+									<img src="/cl.png" alt="" / style="width:23px;height:23px;transition:0.4s;">
 									<style>
 									.close__img>img:hover{
 										transform:rotate(360deg);

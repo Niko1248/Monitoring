@@ -4,7 +4,7 @@
 #include <SD.h>
 #define REQ_BUF_SZ 20
 #define FIRST_PIN 40
-#define LAST_PIN 47
+#define LAST_PIN 51
 
 File webFile;
 char HTTP_req[REQ_BUF_SZ] = { 0 };  // buffered HTTP request stored as null terminated string
@@ -51,8 +51,8 @@ void loop() {
               client.println("HTTP/1.1 200 OK");
               client.println();
             }
-          } else if (StrContains(HTTP_req, "GET /close.png")) {
-            webFile = SD.open("close.png");
+          } else if (StrContains(HTTP_req, "GET /cl.png")) {
+            webFile = SD.open("cl.png");
             if (webFile) {
               client.println("HTTP/1.1 200 OK");
               client.println();

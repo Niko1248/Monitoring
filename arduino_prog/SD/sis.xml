@@ -12,7 +12,7 @@
 		"id": 2,
 		"numberSystem": 1222,
 		"priority": "Особо важная",
-		"correspondent": "Колибри - Рубин",
+		"correspondent": "Колибри - Спидвей",
 		"type": "Цифровая",
 		"trace": "1827 + 1225 + 110152",
 		"chanels": "1122 12341"
@@ -57,7 +57,7 @@
 		"id": 7,
 		"numberSystem": 1152,
 		"priority": "Особо важная",
-		"correspondent": "Колибри - Рубин",
+		"correspondent": "Колибри - Жемчуг",
 		"type": "Цифровая",
 		"trace": "1827 + 1225 + 110152",
 		"chanels": "1122 12341"
@@ -66,7 +66,43 @@
 		"id": 8,
 		"numberSystem": 184572,
 		"priority": "Обыкновенный",
-		"correspondent": "Колибри - Брус",
+		"correspondent": "Колибри - Жемчуг",
+		"type": "Аналоговая",
+		"trace": "1827 + 1225 + 110152",
+		"chanels": "1122 12341"
+	},
+	{
+		"id": 9,
+		"numberSystem": 1824,
+		"priority": "Обыкновенный",
+		"correspondent": "Колибри - Перископ",
+		"type": "Аналоговая",
+		"trace": "1827 + 1225 + 110152",
+		"chanels": "1122 12341"
+	},
+	{
+		"id": 10,
+		"numberSystem": 131100,
+		"priority": "Особо важная",
+		"correspondent": "Колибри - Велюр",
+		"type": "Цифровая",
+		"trace": "1827 + 1225 + 110152",
+		"chanels": "1122 12341"
+	},
+	{
+		"id": 11,
+		"numberSystem": 1152,
+		"priority": "Особо важная",
+		"correspondent": "Колибри - Пульсатор",
+		"type": "Цифровая",
+		"trace": "1827 + 1225 + 110152",
+		"chanels": "1122 12341"
+	},
+	{
+		"id": 12,
+		"numberSystem": 184572,
+		"priority": "Обыкновенный",
+		"correspondent": "Колибри - Папоротник",
 		"type": "Аналоговая",
 		"trace": "1827 + 1225 + 110152",
 		"chanels": "1122 12341"

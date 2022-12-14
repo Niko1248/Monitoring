@@ -605,14 +605,14 @@ body {
   display: grid;
   position: relative;
   text-align: center;
-  grid-template-columns: 0.3fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 0.3fr 1fr 1fr 2fr 1fr 1fr;
   grid-column: span 6;
   align-items: center;
 }
 
 .table__item {
   display: grid;
-  grid-template-columns: 0.3fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 0.3fr 1fr 1fr 2fr 1fr 1fr;
   grid-column: span 6;
   align-items: center;
   padding: 7px 0;
@@ -629,7 +629,7 @@ body {
   text-align: center;
   display: grid;
   position: relative;
-  grid-template-columns: 0.3fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 0.3fr 1fr 1fr 2fr 1fr 1fr;
   grid-column: span 6;
   align-items: center;
   padding: 5px 0;
@@ -764,21 +764,19 @@ body {
   content: counter(section) '.';
 }
 
-
-
-.checkbox{
-	display: flex;
-	flex-direction: column;
+.checkbox {
+  display: flex;
+  flex-direction: column;
 }
-.checkbox__wrap{
-	display: flex;
-	align-items: center;
-	margin-bottom: 10px;
+.checkbox__wrap {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
-.toggle-pill-dark input[type="checkbox"] {
+.toggle-pill-dark input[type='checkbox'] {
   display: none;
 }
-.toggle-pill-dark input[type="checkbox"] + label {
+.toggle-pill-dark input[type='checkbox'] + label {
   display: block;
   position: relative;
   width: 3em;
@@ -793,8 +791,8 @@ body {
   -webkit-transition: background 0.1s ease-in-out;
   transition: background 0.1s ease-in-out;
 }
-.toggle-pill-dark input[type="checkbox"] + label:before {
-  content: "";
+.toggle-pill-dark input[type='checkbox'] + label:before {
+  content: '';
   display: block;
   width: 1.2em;
   height: 1.2em;
@@ -808,13 +806,18 @@ body {
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
 }
-.toggle-pill-dark input[type="checkbox"]:checked + label:before {
+.toggle-pill-dark input[type='checkbox']:checked + label:before {
   background: #47cf73;
   box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.2);
   left: 1.6em;
   -webkit-transform: rotate(295deg);
   transform: rotate(295deg);
 }
+<<<<<<< Updated upstream
 .checkbox__name{
 	margin-left: 10px;
+=======
+.checkbox__name {
+  margin-left: 10px;
+>>>>>>> Stashed changes
 }
