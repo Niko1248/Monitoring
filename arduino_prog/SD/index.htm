@@ -12,19 +12,13 @@
 
 	<body>
 		<div id="p_preloader" class="preloader">
+			<div class="preloader__percent"></div>
 			<div class="load">
-				<div class="inload"></div>
+				<div class="inload">
+					</div>
+				</div>
 			</div>
 		</div>
-		<style>
-			.state_on {
-				color: greenyellow;
-			}
-
-			.state_off {
-				color: red;
-			}
-		</style>
 		<div class="wrapper__1">
 			<h2>Система мониторинга систем передачи центра связи (СУС)</h2>
 			<form class="search-form" action="" method="GET">
@@ -72,6 +66,23 @@
 		</div>
 		<script>
 			////////////////////////////MAIN-start////////////////////////////////////////////////
+			
+			const preloaderPercent = document.querySelector('.preloader__percent')
+				const loadTime = 36
+				let percentCounter = 0
+				const perc = setInterval(() => {
+				percForSecond = Number((100 / loadTime).toFixed(2))
+				preloaderPercent.innerText = Number(percentCounter).toFixed(2) + "%"
+				percentCounter += percForSecond
+				if(percentCounter >= 97){
+					preloaderPercent.innerText = 100 + "%"
+				}else if (percentCounter >= 100){
+					clearInterval(perc)
+				}
+			},  1000 )
+
+
+
 			window.onload = function () {
 				load();
 
@@ -86,6 +97,15 @@
 				const filterOff = document.getElementById('filter-off')
 				const systemActive = new Set()
 				const systemNonActive = new Set()
+
+
+
+
+				
+				
+
+
+
 
 				/////////////////////////////////// Обработка Ajax start////////////////////////////////////////
 				setInterval(function () {
@@ -320,8 +340,10 @@
 				popup()
 			}
 
+			
+			
+			let preloader = document.querySelector('.preloader')
 			function load() {
-				let preloader = document.querySelector('.preloader')
 				preloader.classList.toggle('remove')
 				document.querySelector('body').style.overflowX = 'visible'
 				document.querySelector('body').style.overflowY = 'visible'
