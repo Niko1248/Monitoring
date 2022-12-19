@@ -674,7 +674,13 @@ body {
   width: 30px;
   height: 30px;
 }
-
+.close svg{
+	transition: 0.4s;
+}
+.close svg:hover{
+	transform: rotate(360deg);
+	transition: 0.4s;
+}
 .popup__content {
   height: 90%;
   margin: 0 auto;
@@ -880,4 +886,17 @@ body {
   border-right: 2px solid rgb(119, 73, 73);
   border-radius: 0;
   transform: translate(31px, 3px) rotate(-45deg);
+}
+.reset_button{
+	cursor: pointer;
+	position: fixed;
+  bottom: 10%;
+  right: 2.5%;
+}
+#reset_button{
+	transition: 0.3s;
+}
+#reset_button:hover{
+	transform: rotate(140deg);
+	transition: 0.3s;
 }

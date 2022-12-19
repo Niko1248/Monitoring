@@ -2,7 +2,7 @@
 #include <SPI.h>
 #include <Ethernet.h>
 #include <SD.h>
-#define REQ_BUF_SZ 20
+#define REQ_BUF_SZ 40
 #define FIRST_PIN 40
 #define LAST_PIN 51
 
@@ -10,7 +10,7 @@ File webFile;
 char HTTP_req[REQ_BUF_SZ] = { 0 };  // buffered HTTP request stored as null terminated string
 char req_index = 0;                 // index into HTTP_req buffer
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
-IPAddress ip(192, 168, 1, 110);
+IPAddress ip(192, 168, 0, 110);
 
 
 EthernetServer server(80);
@@ -51,12 +51,6 @@ void loop() {
               client.println("HTTP/1.1 200 OK");
               client.println();
             }
-          } else if (StrContains(HTTP_req, "GET /cl.png")) {
-            webFile = SD.open("cl.png");
-            if (webFile) {
-              client.println("HTTP/1.1 200 OK");
-              client.println();
-            }
           } else if (StrContains(HTTP_req, "GET /sis.xml")) {
             webFile = SD.open("sis.xml");
             if (webFile) {
@@ -81,14 +75,14 @@ void loop() {
               client.println("HTTP/1.1 200 OK");
               client.println();
             }
-          } else if (StrContains(HTTP_req, "GET /R_M.ttf")) {
-            webFile = SD.open("R_M.ttf");
+          } else if (StrContains(HTTP_req, "GET /alert.ogg")) {
+            webFile = SD.open("alert.ogg");
             if (webFile) {
               client.println("HTTP/1.1 200 OK");
               client.println();
             }
-          } else if (StrContains(HTTP_req, "GET /alert.ogg")) {
-            webFile = SD.open("alert.ogg");
+          } else if (StrContains(HTTP_req, "GET /R_M.ttf")) {
+            webFile = SD.open("R_M.ttf");
             if (webFile) {
               client.println("HTTP/1.1 200 OK");
               client.println();
