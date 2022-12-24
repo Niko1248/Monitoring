@@ -11,22 +11,12 @@
 	</head>
 
 	<body>
-		<!-- <div id="p_preloader" class="preloader">
+		<div id="p_preloader" class="preloader">
 			<div class="preloader__percent"></div>
 			<div class="load">
 				<div class="inload">
 				</div>
 			</div>
-		</div> -->
-
-
-		<div class="aut_container">
-			<form class="aut_form">
-				<h2>Войдите в систему</h2>
-				<input type="text" id="login" placeholder="логин">
-				<input type="password" id="password" placeholder="пароль">
-				<button id="aut_btn">войти</button>
-			</form>
 		</div>
 
 		<div class="wrapper__1">
@@ -90,7 +80,7 @@
 		<script>
 			////////////////////////////MAIN-start////////////////////////////////////////////////
 
-			/* const preloaderPercent = document.querySelector('.preloader__percent')
+			const preloaderPercent = document.querySelector('.preloader__percent')
 			const loadTime = 36
 			let percentCounter = 0
 			const perc = setInterval(() => {
@@ -102,40 +92,12 @@
 				} else if (percentCounter >= 100) {
 					clearInterval(perc)
 				}
-			}, 1000) */
+			}, 1000)
 
 
-			/* audio.play() */
-
-			////////////////////////////////Аутентификация/////////////////////
-
-			function root_access() {
-				let password = document.querySelector('#password');
-				let login = document.querySelector('#login');
-				let key = ""
-				document.querySelector('#aut_btn').addEventListener('click', function (event) {
-					event.preventDefault()
-					let key = login.value + password.value
-					console.log(key)
-				})
-				console.log(key + "второй")
-
-				var access = new XMLHttpRequest();
-				access.onreadystatechange = function () {
-					if (this.readyState == 4 && this.status == 200 && this.responseText != null) {
+			audio.play()
 
 
-						/* if (this.responseText) */
-
-					};
-					access.open("GET", "root_access_backend", true);
-					access.send();
-
-				}
-			}
-			root_access()
-
-			/////////////////////////////Аутентификация end/////////////////////
 
 			window.onload = function () {
 
@@ -162,7 +124,7 @@
 					document.querySelector('body').style.overflowX = 'visible'
 					document.querySelector('body').style.overflowY = 'visible'
 				}
-				/* load(); */
+				load();
 
 				///////////////////////////////// Preloader end////////////////////////////////////////
 
