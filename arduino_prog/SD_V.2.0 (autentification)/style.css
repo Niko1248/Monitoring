@@ -439,9 +439,10 @@ body {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 100;
-  color: white;
+  color: rgb(203, 201, 201);
   font-size: 16px;
-  background: #1d1c1c;
+  background: #121111;
+  overflow-y: hidden;
   overflow-x: hidden;
   counter-reset: section;
 }
@@ -595,10 +596,12 @@ body {
 
 .table {
   display: grid;
-  background: #333333;
+  background: #000000;
   margin-top: 10px;
+  margin-bottom: 50px;
   border-radius: 5px;
   gap: 5px;
+  transition: 2s;
 }
 
 .table__grid {
@@ -658,7 +661,7 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
   margin: 0 auto;
-  background-color: rgba(17, 17, 17, 0.851);
+  background-color: rgba(0, 0, 0, 0.851);
   border-radius: 10px;
   z-index: 4;
 }
@@ -908,7 +911,7 @@ body {
   z-index: 99999999999999999999;
   width: 100vw;
   height: 100vh;
-  background: #000;
+  background: #121111;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -918,7 +921,296 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
+.animation_load {
+  position: relative;
+  opacity: 0;
+  transition: 3s;
+}
+.animation_load-line::before {
+  z-index: 1;
+  content: '';
+  position: absolute;
+  top: -110px;
+  left: -185px;
+  display: block;
+  width: 370px;
+  height: 370px;
+  border: 1px solid white;
+  border-radius: 50%;
+  animation: 3.5s rotate infinite linear;
+  animation-delay: 2s;
+  transition: 1s;
+  filter: drop-shadow(0px 10px 20px rgb(0, 255, 229));
+}
+.animation_load::before {
+  z-index: 1;
+  transition: 1s;
+  content: '';
+  position: absolute;
+  top: -105px;
+  left: -180px;
+  display: block;
+  width: 360px;
+  height: 360px;
+  border: 1px solid white;
+  border-radius: 50%;
+  animation: 2.6s rotate1 infinite linear;
+  animation-delay: 2s;
+}
+.animation_load::after {
+  z-index: 1;
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: -175px;
+  display: block;
+  width: 350px;
+  height: 350px;
+  border: 1px solid white;
+  border-radius: 50%;
+  animation: 2s rotate infinite linear;
+  transition: 1s;
+}
+@-webkit-keyframes rotate1 {
+  0% {
+    border: 0px solid white;
+    transform: rotate(0);
+    filter: drop-shadow(0px 0px 0px rgb(0, 255, 229));
+  }
+  50% {
+    transform: rotate(180deg);
+    border-radius: 45%;
+    border: 2px solid white;
+    filter: drop-shadow(0px 0px 10px rgb(0, 255, 229));
+  }
+  100% {
+    transform: rotate(360deg);
+    border-radius: 50%;
+    filter: drop-shadow(0px 0px 0px rgb(0, 255, 229));
+  }
+}
+@-webkit-keyframes rotate {
+  0% {
+    border: 0px solid white;
+    transform: rotate(0);
+    filter: drop-shadow(0px 0px 0px rgb(0, 255, 229));
+  }
+  20% {
+    transform: rotate(70deg);
+    border-radius: 45%;
+    border: 3px solid rgb(0, 255, 229);
+  }
+  50% {
+    transform: rotate(180deg);
+    border-radius: 40%;
+    border: 3px solid rgb(0, 255, 229);
+    filter: drop-shadow(0px 0px 60px rgb(0, 255, 229));
+  }
+  100% {
+    transform: rotate(360deg);
+    border-radius: 50%;
+    filter: drop-shadow(0px 0px 0px rgb(0, 255, 229));
+  }
+}
+
+/* ////////////////////////error ////////*/
+.animation_load--error {
+  position: relative;
+  opacity: 0.5;
+  transition: 1s;
+}
+.animation_load-line--error {
+  transition: 1s;
+  opacity: 0.5;
+}
+.animation_load-line--error::before {
+  z-index: 1;
+  content: '';
+  position: absolute;
+  top: -110px;
+  left: -185px;
+  display: block;
+  width: 370px;
+  height: 370px;
+  border: 1px solid rgb(255, 0, 0);
+  border-radius: 50%;
+  animation: 3.5s rotate--error infinite linear;
+  transition: 1s;
+}
+.animation_load--error::before {
+  z-index: 1;
+  transition: 1s;
+  content: '';
+  position: absolute;
+  top: -105px;
+  left: -180px;
+  display: block;
+  width: 360px;
+  height: 360px;
+  border: 1px solid rgb(255, 0, 0);
+  border-radius: 50%;
+  animation: 2.6s rotate1--error infinite linear;
+  animation-delay: 2s;
+}
+.animation_load--error::after {
+  z-index: 1;
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: -175px;
+  display: block;
+  width: 350px;
+  height: 350px;
+  border: 1px solid rgb(255, 0, 0);
+  border-radius: 50%;
+  animation: 2s rotate--error infinite linear;
+  transition: 1s;
+}
+@-webkit-keyframes rotate1--error {
+  0% {
+    border: 1px solid rgb(255, 0, 0);
+    transform: rotate(0);
+    filter: drop-shadow(0px 0px 0px rgb(164, 34, 34));
+  }
+  50% {
+    transform: rotate(180deg);
+    border-radius: 45%;
+    border: 2px solid rgb(255, 157, 0);
+    filter: drop-shadow(0px 0px 30px rgb(255, 132, 0));
+  }
+  100% {
+    transform: rotate(360deg);
+    border-radius: 50%;
+    border: 2px solid rgb(255, 0, 0);
+    filter: drop-shadow(0px 0px 0px rgb(255, 0, 0));
+  }
+}
+@-webkit-keyframes rotate--error {
+  0% {
+    border: 1px solid rgb(255, 0, 0);
+    transform: rotate(0);
+    filter: drop-shadow(0px 0px 0px rgb(255, 0, 0));
+  }
+  20% {
+    border: 1px solid rgb(255, 0, 0);
+    transform: rotate(70deg);
+    border-radius: 45%;
+    filter: drop-shadow(0px 0px 20px rgb(255, 0, 0));
+  }
+  50% {
+    transform: rotate(180deg);
+    border-radius: 40%;
+    border: 3px solid rgb(255, 0, 0);
+    filter: drop-shadow(0px 0px 60px rgb(255, 0, 0));
+  }
+  100% {
+    transform: rotate(360deg);
+    border-radius: 50%;
+    filter: drop-shadow(0px 0px 0px rgb(255, 0, 0));
+  }
+}
+/* ////////////////////////error   end */
+
+/* ////////////////////////sucsess ////////*/
+.animation_load--s {
+  position: relative;
+  opacity: 0.5;
+  transition: 1s;
+}
+.animation_load-line--s {
+  transition: 1s;
+  opacity: 0.5;
+}
+.animation_load-line--s::before {
+  z-index: 1;
+  content: '';
+  position: absolute;
+  top: -110px;
+  left: -185px;
+  display: block;
+  width: 370px;
+  height: 370px;
+  border: 1px solid rgb(0, 255, 13);
+  border-radius: 50%;
+  animation: 3.5s rotate--s infinite linear;
+  transition: 1s;
+}
+.animation_load--s::before {
+  z-index: 1;
+  transition: 1s;
+  content: '';
+  position: absolute;
+  top: -105px;
+  left: -180px;
+  display: block;
+  width: 360px;
+  height: 360px;
+  border: 1px solid rgb(0, 255, 13);
+  border-radius: 50%;
+  animation: 2.6s rotate1--s infinite linear;
+  animation-delay: 2s;
+}
+.animation_load--s::after {
+  z-index: 1;
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: -175px;
+  display: block;
+  width: 350px;
+  height: 350px;
+  border: 1px solid rgb(0, 255, 13);
+  border-radius: 50%;
+  animation: 2s rotate--s infinite linear;
+  transition: 1s;
+}
+@-webkit-keyframes rotate1--s {
+  0% {
+    border: 1px solid rgb(0, 255, 13);
+    transform: rotate(0);
+    filter: drop-shadow(0px 0px 0px rgb(0, 255, 13));
+  }
+  50% {
+    transform: rotate(180deg);
+    border-radius: 45%;
+    border: 2px solid rgb(0, 255, 13);
+    filter: drop-shadow(0px 0px 30px rgb(0, 255, 13));
+  }
+  100% {
+    transform: rotate(360deg);
+    border-radius: 50%;
+    border: 2px solid rgb(148, 255, 153);
+    filter: drop-shadow(0px 0px 0px rgb(0, 255, 13));
+  }
+}
+@-webkit-keyframes rotate--s {
+  0% {
+    border: 1px solid rgb(0, 255, 13);
+    transform: rotate(0);
+    filter: drop-shadow(0px 0px 0px rgb(0, 255, 13));
+  }
+  20% {
+    border: 1px solid rgb(0, 255, 13);
+    transform: rotate(70deg);
+    border-radius: 45%;
+    filter: drop-shadow(0px 0px 20px rgb(0, 255, 13));
+  }
+  50% {
+    transform: rotate(180deg);
+    border-radius: 40%;
+    border: 3px solid rgb(0, 255, 13);
+    filter: drop-shadow(0px 0px 60px rgb(0, 255, 13));
+  }
+  100% {
+    transform: rotate(360deg);
+    border-radius: 50%;
+    filter: drop-shadow(0px 0px 0px rgb(0, 255, 13));
+  }
+}
+/* ////////////////////////sucsess  end ////////*/
+
 .aut_form h2 {
   font-weight: 100;
   font-family: Arial, Helvetica, sans-serif;
@@ -927,6 +1219,7 @@ body {
   letter-spacing: 4px;
 }
 .aut_form input {
+  z-index: 10;
   width: 290px;
   font-family: Arial, Helvetica, sans-serif;
   margin: 5px 0;
@@ -952,6 +1245,7 @@ body {
   font-size: 16px;
 }
 .aut_form button {
+  z-index: 10;
   width: 290px;
   margin: 10px 0;
   background: rgb(201, 200, 200);
@@ -971,4 +1265,18 @@ body {
   width: 285px;
   transition: 0.1s;
   letter-spacing: 1.5px;
+}
+.aut_close {
+  transform: scale(10) translateY(-100vh);
+  opacity: 0;
+  transition: 2s;
+}
+.top_container {
+  transform: scale(0) translateY(100vh);
+  position: relative;
+}
+.top_container--open {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  transition: 2s;
 }

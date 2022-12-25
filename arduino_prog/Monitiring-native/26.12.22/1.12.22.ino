@@ -12,7 +12,7 @@ char req_index = 0;                 // index into HTTP_req buffer
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
 IPAddress ip(192, 168, 0, 110);
 
-
+//////////////////////////////////////////
 EthernetServer server(80);
 
 void setup() {
@@ -95,6 +95,8 @@ void loop() {
               bool Dr = digitalRead(i);
               client.print(Dr);
             }
+          } else if (StrContains(HTTP_req, "get_access_backend")) {
+            client.print("adminqwe123");
           }
           /////////////////////////////////////Вот заканчивается Ajax///////////////////////////////////////////////
           if (webFile) {
