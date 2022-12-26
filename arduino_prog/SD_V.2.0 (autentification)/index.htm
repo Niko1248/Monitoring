@@ -35,13 +35,13 @@
 		</div>
 		<div class="top_container">
 			<div class="wrapper__1">
-				<h2>Система мониторинга систем передачи центра связи (СУС)</h2>
+				<h2>мониторинг систем передачи узла связи</h2>
 				<div class="wrapper_audio" style="z-index: 1000;">
 					<div class="box1"></div>
 					<div class="box2"></div>
 				</div>
 				<div class="reset_button" style="z-index: 1000;">
-					<svg id="reset_button" viewBox="0 0 30 30" width="30" height="30" xmlns="http://www.w3.org/2000/svg"
+					<svg id="reset_button" viewBox="0 0 30 30" width="25" height="25" xmlns="http://www.w3.org/2000/svg"
 						xmlns:svg="http://www.w3.org/2000/svg" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 						<path
 							d="m 20.602104,4.9848787 a 12.793296,12.555516 54.369314 0 1 4.77809,4.7191103 l -0.0172,-7.0786603 a 0.28268844,0.27743434 54.36927 0 1 0.27933,-0.2762 l 1.23374,0.0183 a 0.28378413,0.27850967 54.369312 0 1 0.27966,0.28649 l 0.0239,10.2432703 a 0.28323628,0.277972 54.36932 0 1 -0.29972,0.27624 l -10.15639,-0.90215 a 0.28323628,0.277972 54.36932 0 1 -0.25975,-0.30481 l 0.0884,-1.23766 a 0.28378413,0.27850967 54.369312 0 1 0.2989,-0.25606 l 7.27777,0.64882 A 10.948151,10.744666 54.369349 0 0 12.338684,5.3132187 c -5.8344403,1.12311 -9.5876903,6.8288503 -8.3675903,12.7188903 1.22009,5.89005 6.9587003,9.76862 12.7931403,8.64549 a 10.922949,10.719934 54.369365 0 0 6.32478,-3.86123 0.28268844,0.27743434 54.36927 0 1 0.38679,-0.0472 l 0.99292,0.75425 a 0.28378413,0.27850967 54.369312 0 1 0.0559,0.40018 12.757685,12.520569 54.36939 1 1 -3.92273,-18.9370203 z"
@@ -117,6 +117,19 @@
 			let password = document.querySelector('#password');
 			let login = document.querySelector('#login');
 			let key = ""
+
+			function Go() {
+				document.querySelector('.aut_container').classList.add('aut_close');
+				document.querySelector('body').style.overflowY = "visible";
+				document.querySelector('body').style.background = "1c1c1c";
+				document.querySelector('.top_container').classList.add('top_container--open');
+				document.querySelector('.table').style.background = "#333333";
+				document.querySelector('.animation_load').style.display = "none";
+				document.querySelector('.animation_load-line').style.display = "none";
+			}
+
+
+
 			function root_access() {
 				var access = new XMLHttpRequest();
 				access.onreadystatechange = function () {
@@ -129,13 +142,7 @@
 								document.querySelector('.animation_load-line').style.opacity = 0;
 							}, 3000)
 							setTimeout(() => {
-								document.querySelector('.aut_container').classList.add('aut_close');
-								document.querySelector('body').style.overflowY = "visible";
-								document.querySelector('body').style.background = "1c1c1c";
-								document.querySelector('.top_container').classList.add('top_container--open');
-								document.querySelector('.table').style.background = "#333333";
-								document.querySelector('.animation_load').style.display = "none";
-								document.querySelector('.animation_load-line').style.display = "none";
+								Go()
 							}, 4000)
 							setTimeout(() => {
 								document.querySelector('.aut_container').style.display = "none";
@@ -485,16 +492,16 @@
 			function renderSystems(systemsArray) {
 				//перебираем все элементы в массиве и вставляем их в шаблон
 				systemsArray.forEach(function (item) {
-					const systemHTML = `<div class="table__grid">
+					const systemHTML =
+						`<div class="table__grid">
 						<div class="table__item">
-						<div class="row-number"></div>
-						<div class="numberSystem">${item.numberSystem}</div>
-						<div>${item.priority}</div>
-						<div class="correspondent">${item.correspondent}</div>
-						<div>${item.type}</div>
-						<div class="state" data-sound="on"></div>
-						
-					</div>
+							<div class="row-number"></div>
+							<div class="numberSystem">${item.numberSystem}</div>
+							<div>${item.priority}</div>
+							<div class="correspondent">${item.correspondent}</div>
+							<div>${item.type}</div>
+							<div class="state" data-sound="on"></div>
+						</div>
 					<div class="popup__wrapper">
 						<div class="popup">
 							<div class="close">
@@ -527,36 +534,52 @@
 								${item.trace}																
 								</div>
 								<div class="popup__content-down" style="text-align: start;">
-								<div>
-									<p style="margin-bottom:10px;font-weight:bold">Загрузка:<p> 
-								 	<ul style="text-align: start;">
-										<li>"ГЦКС№6"- Пеликан 1432211</li>
-										<li>"Вершина"- Перископ 332142</li>
-										<li>"Крокус-УР" - Квадрат 512112</li>
-										<li>"СПС Глубина" - Пеликан 500112</li>
-										<li>"Вьюга-Ц" - Селигер 3421331 </li>
-										<li>"ГЦКС№6"- Пеликан 1432211</li>
-										<li>"Вершина"- Перископ 332142</li>
-										<li>"Крокус-УР" - Квадрат 512112</li>
-										<li>"СПС Глубина" - Пеликан 149911</li>
-										<li>"Вьюга-Ц" - Селигер 3421331 </li>
-										
-									</ul>													
-								</div>
-								<div class="popup__state"><p style="margin-bottom:10px;font-weight:bold">Состояние:<p>  </div
-								</div>
+									<div>
+										<p style="margin-bottom:10px;font-weight:bold">Загрузка:<p> 
+										<ul style="text-align: start;">
+											<li>"Изделие"- УС"ХХХХХХ" 1432211</li>
+											<li>"Транзит"- УС"ХХХХХХ" - УС"ХХХХХХ" 3322</li>
+											<li>"Транзит"- УС"ХХХХХХ" - УС"ХХХХХХ" 4112</li>
+											<li>"Транзит"- УС"ХХХХХХ" - УС"ХХХХХХ" 5012</li>
+											<li>"Изделие"- УС"ХХХХХХ" 3421331 </li>
+											<li>"Изделие"- УС"ХХХХХХ" 1432211</li>
+											<li>"Изделие"- УС"ХХХХХХ" 332142</li>
+											<li>"Изделие"- УС"ХХХХХХ" 512112</li>
+											<li>"Изделие"- УС"ХХХХХХ" 149911</li>
+											<li>"ВИзделие"- УС"ХХХХХХ" 3421331 </li>
+										</ul>													
+									</div>
+								<div class="popup__state"><p style="margin-bottom:10px;font-weight:bold">Состояние:</p></div>
+								<div class="popup__reserve">
+									<p style="margin-bottom:10px;font-weight:bold">Вариант резервирования:</p>
+									<select class="reserve">
+										<option>Вариант 2/5</option>
+										<option>Вариант 3/14</option>
+										<option>Вариант 12/1</option>
+										<option selected>Вариант 4/1</option>
+										<option>Вариант 2/5</option>
+										<option>Вариант 3/14</option>
+										<option>Вариант 12/1</option>
+										<option>Вариант 4/1</option>
+										<option>Вариант 2/5</option>
+									</select>
+								</div>	
 							</div>
 						</div>	
-					</div>			
 					</div>`
 					//вставляем шаблон в страницу(отрисовываем)
 					systemsContainer.insertAdjacentHTML('beforeend', systemHTML)
+
 				})
 			}
 			///////////////////////////RENDER_SYSTEMS-end/////////////////////////////////////
 
 		</script>
-		<p style="position: absolute; bottom:0;left: 50%;font-size:10px">Чехов 2022 г.</p>
+		<p style="position: absolute; bottom:0;left: 50%;font-size:12px">Чехов 2022 г.</p>
+
+
+
+
 	</body>
 
 </html>
