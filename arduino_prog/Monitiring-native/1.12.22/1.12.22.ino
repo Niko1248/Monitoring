@@ -2,90 +2,101 @@
 #include <SPI.h>
 #include <Ethernet.h>
 #include <SD.h>
-#define REQ_BUF_SZ 40
+#define REQ_BUF_SZ 128
 #define FIRST_PIN 40
 #define LAST_PIN 51
+#define FREE_SOCKETS 1
 
+File myFile;
 File webFile;
+
+#define MAX_BUFFER_SIZE 512
+uint16_t rsize;
+uint8_t buff[MAX_BUFFER_SIZE];
 char HTTP_req[REQ_BUF_SZ] = { 0 };  // buffered HTTP request stored as null terminated string
 char req_index = 0;                 // index into HTTP_req buffer
+
+
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
 IPAddress ip(192, 168, 0, 110);
-
-//////////////////////////////////////////
 EthernetServer server(80);
 
 void setup() {
+  Serial.begin(9600);
+
   for (int i = FIRST_PIN; i <= LAST_PIN; i++) {  // Установил все пины в input
     pinMode(i, INPUT);
   }
   SD.begin(4);
   Ethernet.begin(mac, ip);
   server.begin();
+
+  myFile = SD.open("log.txt", FILE_WRITE);
+}
+void loop() {
+  serverWorks();
 }
 
+void serverWorks2(EthernetClient sclient) {
 
-void loop() {
-
-  EthernetClient client = server.available();
-  if (client) {
+  if (sclient) {
     // если сервер поднят
     boolean currentLineIsBlank = true;
-    while (client.connected()) {  // и мы подключились
-      if (client.available()) {
-        char c = client.read();  //присваиваем реквесты переменной с
+    while (sclient.connected()) {  // и мы подключились
+      if (sclient.available()) {
+        char c = sclient.read();  //присваиваем реквесты переменной с
         if (req_index < (REQ_BUF_SZ - 1)) {
           HTTP_req[req_index] = c;  // читаем посимвольно запрос
           req_index++;
         }
         if (c == '\n' && currentLineIsBlank) {                                               // если символы в запросе кончились то
           if (StrContains(HTTP_req, "GET / ") || StrContains(HTTP_req, "GET /index.htm")) {  // содердит ли реквест GET /index.htm ?
-            client.println("HTTP/1.1 200 OK");
-            client.println("Content-Type: text/html");
-            client.println("Connnection: close");
-            client.println();
+            sclient.println("HTTP/1.1 200 OK");
+            sclient.println("Content-Type: text/html");
+            sclient.println("Connnection: close");
+            sclient.println();
             webFile = SD.open("index.htm");
           } else if (StrContains(HTTP_req, "GET /favicon.ico")) {
             webFile = SD.open("favicon.ico");
             if (webFile) {
-              client.println("HTTP/1.1 200 OK");
-              client.println();
+              sclient.println("HTTP/1.1 200 OK");
+              sclient.println();
             }
           } else if (StrContains(HTTP_req, "GET /sis.xml")) {
             webFile = SD.open("sis.xml");
             if (webFile) {
-              client.println("HTTP/1.1 200 OK");
-              client.println();
+              sclient.println("HTTP/1.1 200 OK");
+              sclient.println();
             }
           } else if (StrContains(HTTP_req, "GET /style.css")) {
             webFile = SD.open("style.css");
             if (webFile) {
-              client.println("HTTP/1.1 200 OK");
-              client.println();
+              sclient.println("HTTP/1.1 200 OK");
+              sclient.println();
             }
-          } else if (StrContains(HTTP_req, "GET /R_EL.ttf")) {
-            webFile = SD.open("R_EL.ttf");
+          } else if (StrContains(HTTP_req, "GET /R_EL.wof")) {
+            webFile = SD.open("R_EL.wof");
             if (webFile) {
-              client.println("HTTP/1.1 200 OK");
-              client.println();
+              sclient.println("HTTP/1.1 200 OK");
+              sclient.println();
             }
-          } else if (StrContains(HTTP_req, "GET /R_L.ttf")) {
-            webFile = SD.open("R_L.ttf");
+          } else if (StrContains(HTTP_req, "GET /R_L.wof")) {
+            webFile = SD.open("R_L.wof");
             if (webFile) {
-              client.println("HTTP/1.1 200 OK");
-              client.println();
+              sclient.println("HTTP/1.1 200 OK");
+              sclient.println();
             }
           } else if (StrContains(HTTP_req, "GET /alert.ogg")) {
             webFile = SD.open("alert.ogg");
             if (webFile) {
-              client.println("HTTP/1.1 200 OK");
-              client.println();
+              sclient.println("HTTP/1.1 200 OK");
+              sclient.println();
             }
-          } else if (StrContains(HTTP_req, "GET /R_M.ttf")) {
-            webFile = SD.open("R_M.ttf");
+          } else if (StrContains(HTTP_req, "GET /R_M.wof")) {
+            webFile = SD.open("R_M.wof");
             if (webFile) {
-              client.println("HTTP/1.1 200 OK");
-              client.println();
+              sclient.println("HTTP/1.1 200 OK");
+              sclient.println();
             }
           }
           /////////////////////////////////////Вот тут начинается Ajax///////////////////////////////////////////////
@@ -93,15 +104,22 @@ void loop() {
 
             for (int i = FIRST_PIN; i <= LAST_PIN; i++) {
               bool Dr = digitalRead(i);
-              client.print(Dr);
+              sclient.print(Dr);
             }
           } else if (StrContains(HTTP_req, "get_access_backend")) {
-            client.print("adminqwe123");
+            sclient.print("adminqwe123");
+          } else if (StrContains(HTTP_req, "log_write")) {
+            if(myFile){
+              Serial.println(c);
+              myFile.println(c);
+              myFile.close();
+            }
           }
+
           /////////////////////////////////////Вот заканчивается Ajax///////////////////////////////////////////////
           if (webFile) {
             while (webFile.available()) {
-              client.write(webFile.read());  // отправляем готовые данные на страницу браузера
+              sclient.write(webFile.read());  // отправляем готовые данные на страницу браузера
             }
             webFile.close();
           }
@@ -121,7 +139,7 @@ void loop() {
     // give the web browser time to receive the data
     delay(1);
     // close the connection:
-    client.stop();
+    sclient.stop();
   }
 }
 
@@ -151,4 +169,14 @@ char StrContains(char *str, char *sfind) {
     index++;
   }
   return 0;
+}
+void serverWorks() {
+  for (int sock = 0; sock < MAX_SOCK_NUM - FREE_SOCKETS; sock++) {
+    EthernetClient sclient = server.available_(sock);
+    serverWorks2(sclient);
+  }
+  /*
+  EthernetClient sclient = server.available();
+  serverWorks2(sclient);
+  */
 }

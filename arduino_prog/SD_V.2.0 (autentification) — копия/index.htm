@@ -264,10 +264,10 @@
 						PinRequest.open("GET", "readPinInfo", true);
 						PinRequest.send();
 						filterState();
-						systemActive.clear()
-						systemNonActive.clear()
+						systemActive.clear();
+						systemNonActive.clear();
 						if (systemNonActive.size == 0) {
-							audio.pause()
+							audio.pause();
 						}
 					}
 					getPinInfo()
@@ -300,6 +300,17 @@
 				MuteSound()
 
 				///////////////////////////////// Звуковая сигнализация end///////////////////////////////////
+
+				function LogWrite() {
+					var logText = new XMLHttpRequest();
+						LogText.onreadystatechange = function () {
+							if (this.readyState == 4 && this.status == 200) {
+
+							}
+						}
+						logText.open("GET", "log_write", true);
+						logText.send();
+				}
 
 				////////////////////////////////////// Popup start///////////////////////////////////////////
 				function popup() {
@@ -500,7 +511,7 @@
 							<div>${item.priority}</div>
 							<div class="correspondent">${item.correspondent}</div>
 							<div>${item.type}</div>
-							<div class="state" data-sound="on"></div>
+							<div class="state" data-sound="on" onchange="LogWrite()"></div>
 						</div>
 					<div class="popup__wrapper">
 						<div class="popup">
