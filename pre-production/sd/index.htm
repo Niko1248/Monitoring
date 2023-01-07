@@ -20,7 +20,7 @@
 		</div> -->
 
 
-		<div class="aut_container">
+		<!-- <div class="aut_container">
 
 			<form class="aut_form">
 				<div class="animation_load">
@@ -32,7 +32,7 @@
 				<button id="aut_btn">войти</button>
 			</form>
 
-		</div>
+		</div> -->
 		<div class="top_container">
 			<div class="wrapper__1">
 				<h2>мониторинг систем передачи узла связи</h2>
@@ -52,17 +52,10 @@
 
 
 
-				<form class="search-form" action="" method="">
+				<form class="search-form" action="" method="GET">
 					<div><label hidden for="system-search">Фильтр</label>
 						<input placeholder="Поиск..." type="search" name="system-search" id="system-search"
 							class="system-search">
-						<script>
-							document.querySelector('#system-search').addEventListener('keydown', function (e) {
-								if (e.keyCode === 13) {
-									event.preventDefault()
-								}
-							})
-						</script>
 					</div>
 					<div class="checkbox">
 						<div class="checkbox__wrap">
@@ -121,71 +114,73 @@
 			audio.play()
 
 			////////////////////////////////Аутентификация/////////////////////
-			let password = document.querySelector('#password');
-			let login = document.querySelector('#login');
-			let key = ""
+			// let password = document.querySelector('#password');
+			// let login = document.querySelector('#login');
+			// let key = ""
 
-			function Go() {
-				document.querySelector('.aut_container').classList.add('aut_close');
-				document.querySelector('body').style.overflowY = "visible";
-				document.querySelector('body').style.background = "1c1c1c";
-				document.querySelector('.top_container').classList.add('top_container--open');
-				document.querySelector('.table').style.background = "#333333";
-				document.querySelector('.animation_load').style.display = "none";
-				document.querySelector('.animation_load-line').style.display = "none";
-			}
+			// function Go() {
+			// 	document.querySelector('.aut_container').classList.add('aut_close');
+			// 	document.querySelector('body').style.overflowY = "visible";
+			// 	document.querySelector('body').style.background = "1c1c1c";
+			// 	document.querySelector('.top_container').classList.add('top_container--open');
+			// 	document.querySelector('.table').style.background = "#333333";
+			// 	document.querySelector('.animation_load').style.display = "none";
+			// 	document.querySelector('.animation_load-line').style.display = "none";
+			// }
 
-			function root_access() {
-				var access = new XMLHttpRequest();
-				access.onreadystatechange = function () {
-					if (this.readyState == 4 && this.status == 200 && this.responseText != null) {
-						if (this.responseText == key) {
-							document.querySelector('.animation_load').classList.add('animation_load--s')
-							document.querySelector('.animation_load-line').classList.add('animation_load-line--s')
-							setTimeout(() => {
-								document.querySelector('.animation_load').style.opacity = 0;
-								document.querySelector('.animation_load-line').style.opacity = 0;
-							}, 3000)
-							setTimeout(() => {
-								Go()
-							}, 4000)
-							setTimeout(() => {
-								document.querySelector('.aut_container').style.display = "none";
-							}, 4500)
 
-						} else {
-							check_aut_animation()
-						}
-					};
-				}
-				access.open("GET", "get_access_backend", true);
-				access.send();
-			}
-			Go()
-			function check_aut_animation() {
-				document.querySelector('.animation_load').classList.add('animation_load--error')
-				document.querySelector('.animation_load-line').classList.add('animation_load-line--error')
-				setTimeout(() => {
-					document.querySelector('.animation_load--error').style.opacity = 1;
-					document.querySelector('.animation_load-line--error').style.opacity = 1;
-				}, 300)
 
-			}
+			// function root_access() {
+			// 	var access = new XMLHttpRequest();
+			// 	access.onreadystatechange = function () {
+			// 		if (this.readyState == 4 && this.status == 200 && this.responseText != null) {
+			// 			if (this.responseText == key) {
+			// 				document.querySelector('.animation_load').classList.add('animation_load--s')
+			// 				document.querySelector('.animation_load-line').classList.add('animation_load-line--s')
+			// 				setTimeout(() => {
+			// 					document.querySelector('.animation_load').style.opacity = 0;
+			// 					document.querySelector('.animation_load-line').style.opacity = 0;
+			// 				}, 3000)
+			// 				setTimeout(() => {
+			// 					Go()
+			// 				}, 4000)
+			// 				setTimeout(() => {
+			// 					document.querySelector('.aut_container').style.display = "none";
+			// 				}, 4500)
 
-			document.querySelector('#aut_btn').addEventListener('click', function (event) {
-				event.preventDefault()
-				document.querySelector('.animation_load').classList.remove('animation_load--error')
-				document.querySelector('.animation_load-line').classList.remove('animation_load-line--error')
-				if (password.value.length == 0 || login.value == 0) {
-					check_aut_animation()
-				} else {
-					key = login.value + password.value
-					document.querySelector('.animation_load').style.opacity = 1;
-					setTimeout(() => {
-						root_access()
-					}, 4000)
-				}
-			})
+			// 			} else {
+			// 				check_aut_animation()
+			// 			}
+			// 		};
+			// 	}
+			// 	access.open("GET", "get_access_backend", true);
+			// 	access.send();
+			// }
+
+			// function check_aut_animation() {
+			// 	document.querySelector('.animation_load').classList.add('animation_load--error')
+			// 	document.querySelector('.animation_load-line').classList.add('animation_load-line--error')
+			// 	setTimeout(() => {
+			// 		document.querySelector('.animation_load--error').style.opacity = 1;
+			// 		document.querySelector('.animation_load-line--error').style.opacity = 1;
+			// 	}, 300)
+
+			// }
+
+			// document.querySelector('#aut_btn').addEventListener('click', function (event) {
+			// 	event.preventDefault()
+			// 	document.querySelector('.animation_load').classList.remove('animation_load--error')
+			// 	document.querySelector('.animation_load-line').classList.remove('animation_load-line--error')
+			// 	if (password.value.length == 0 || login.value == 0) {
+			// 		check_aut_animation()
+			// 	} else {
+			// 		key = login.value + password.value
+			// 		document.querySelector('.animation_load').style.opacity = 1;
+			// 		setTimeout(() => {
+			// 			root_access()
+			// 		}, 4000)
+			// 	}
+			// })
 
 			/////////////////////////////Аутентификация end/////////////////////
 
@@ -206,7 +201,7 @@
 				const audio = document.querySelector('.audio')
 				const resetButton = document.querySelector('.reset_button')
 				const preloader = document.querySelector('.preloader')
-
+				let time = new Date();
 				///////////////////////////////// Preloader start//////////////////////////////////////
 
 				function load() {
@@ -227,11 +222,11 @@
 						var PinRequest = new XMLHttpRequest();
 						PinRequest.onreadystatechange = function () {
 							if (this.readyState == 4 && this.status == 200 && this.responseText != null) {
-
 								stateArray = [];			// В этот массив передаются данные о состоянии пинов
 								stateArray += this.responseText;
 								numbersOfSystems.forEach((el, index, arr) => {
 									let systemRow = el.closest('.table__item');
+									let numberSyst = systemRow.querySelector('.numberSystem')
 									let systemState = systemRow.querySelector('.state');
 									if (stateArray[index] == 1) {
 										systemActive.add(el)
@@ -240,6 +235,16 @@
 										systemState.classList.remove('state_off')
 										systemState.classList.add('state_on')
 										systemState.dataset.sound = 'on'
+										// if(systemState.dataset.log == 'on') {
+										// 	console.log('okey recovery');
+										// 	let logInfoRecovery = 'Восстановлено: Система' + numberSyst.innerHTML + time;
+										// 	const recoveryInfoXHR = new XMLHttpRequest();
+										// 	recoveryInfoXHR.open('POST', 'log_write', true);
+										// 	recoveryInfoXHR.send(logInfoRecovery);
+										// 	systemState.dataset.log = 'ready';
+										// 	console.log(logInfoRecovery);
+										// 	console.log('okey 2 recovery');
+										// }
 									} else if (stateArray[index] == 0) {
 										systemNonActive.add(el);
 										systemState.innerText = 'Авария';
@@ -248,6 +253,22 @@
 										systemState.classList.add('state_off')
 										if (systemState.dataset.sound == 'on') {
 											audio.play()
+										}
+										if(systemState.dataset.log == 'ready') {
+											console.log('okey crash');
+											const crashInfoXHR = new XMLHttpRequest();
+											let logInfoCrash = 'Авария: Система' + numberSyst.innerHTML + time;
+											crashInfoXHR.open('POST', 'log_write', true);
+											crashInfoXHR.setRequestHeader('Content-Type', 'multipart/form-data');
+											crashInfoXHR.onreadystatechange = function() {
+												if (this.readyState != 4) return;
+
+												alert( this.responseText );
+											}	
+											crashInfoXHR.send(logInfoCrash);
+											systemState.dataset.log = 'on';
+											console.log(logInfoCrash);
+											console.log('okey 2 crash');
 										}
 									}
 								});
@@ -269,10 +290,10 @@
 						PinRequest.open("GET", "readPinInfo", true);
 						PinRequest.send();
 						filterState();
-						systemActive.clear()
-						systemNonActive.clear()
+						systemActive.clear();
+						systemNonActive.clear();
 						if (systemNonActive.size == 0) {
-							audio.pause()
+							audio.pause();
 						}
 					}
 					getPinInfo()
@@ -305,6 +326,10 @@
 				MuteSound()
 
 				///////////////////////////////// Звуковая сигнализация end///////////////////////////////////
+
+				function LogSend() {
+					
+				}
 
 				////////////////////////////////////// Popup start///////////////////////////////////////////
 				function popup() {
@@ -505,7 +530,7 @@
 							<div>${item.priority}</div>
 							<div class="correspondent">${item.correspondent}</div>
 							<div>${item.type}</div>
-							<div class="state" data-sound="on"></div>
+							<div class="state" data-sound="on" data-log="ready"></div>
 						</div>
 					<div class="popup__wrapper">
 						<div class="popup">
