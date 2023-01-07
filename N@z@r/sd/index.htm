@@ -19,23 +19,29 @@
 			</div>
 		</div> -->
 
-
-		<div class="aut_container">
-
-			<form class="aut_form">
-				<div class="animation_load">
-					<div class="animation_load-line"></div>
+		<header>
+			<main>
+				<div class="logo">
+					<div class="b1">M</div>
+					<p>ониторинг</p>
 				</div>
-				<h2>Войдите в систему</h2>
-				<input type="text" id="login" placeholder="логин">
-				<input type="password" id="password" placeholder="пароль">
-				<button id="aut_btn">войти</button>
-			</form>
-
-		</div>
-		<div class="top_container">
-			<div class="wrapper__1">
-				<h2>мониторинг систем передачи узла связи</h2>
+				<div class="user">
+					<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
+						xmlns="http://www.w3.org/2000/svg">
+						<path
+							d="M3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12Z"
+							fill="#2A4157" fill-opacity="0.24" />
+						<circle cx="12" cy="10" r="4" fill="#222222" />
+						<path fill-rule="evenodd" clip-rule="evenodd"
+							d="M18.2209 18.2462C18.2791 18.3426 18.2613 18.466 18.1795 18.5432C16.5674 20.0662 14.3928 21 12 21C9.60728 21 7.43264 20.0663 5.82057 18.5433C5.73877 18.466 5.72101 18.3427 5.77918 18.2463C6.94337 16.318 9.29215 15 12.0001 15C14.7079 15 17.0567 16.3179 18.2209 18.2462Z"
+							fill="#222222" />
+					</svg>
+					<p id="ueser_status">admin</p>
+				</div>
+			</main>
+		</header>
+		<div class="sound__wrapper">
+			<div class="btn__sound">
 				<div class="wrapper_audio" style="z-index: 1000;">
 					<div class="box1"></div>
 					<div class="box2"></div>
@@ -49,57 +55,69 @@
 					</svg>
 				</div>
 				<audio id="audio" class="audio" src="/alert.ogg" loop></audio>
-
-
-
-				<form class="search-form" action="" method="">
-					<div><label hidden for="system-search">Фильтр</label>
-						<input placeholder="Поиск..." type="search" name="system-search" id="system-search"
-							class="system-search">
-						<script>
-							document.querySelector('#system-search').addEventListener('keydown', function (e) {
-								if (e.keyCode === 13) {
-									event.preventDefault()
-								}
-							})
-						</script>
+			</div>
+			<div class="aut_container">
+				<form class="aut_form">
+					<div class="animation_load">
+						<div class="animation_load-line"></div>
 					</div>
-					<div class="checkbox">
-						<div class="checkbox__wrap">
-							<div class="toggle-pill-dark">
-								<input type="checkbox" id="filter-on" name="state-on" value="В работе">
-								<label for="filter-on"></label>
-							</div>
-							<div class="checkbox__name">Исправные</div>
-						</div>
-						<div class="checkbox__wrap">
-							<div class="toggle-pill-dark">
-								<input type="checkbox" id="filter-off" name="state-off" value="Авария">
-								<label for="filter-off"></label>
-							</div>
-							<div class="checkbox__name">Неисправные</div>
-						</div>
-					</div>
+					<h2>Войдите в систему</h2>
+					<input type="text" id="login" placeholder="логин">
+					<input type="password" id="password" placeholder="пароль">
+					<button id="aut_btn">войти</button>
 				</form>
 			</div>
-			<div class="main">
-				<div class="wrapper">
-					<div class="table" id="table-systems">
-						<div class="table__title">
-							<div>№ <br>п/п</div>
-							<div>Система передачи</div>
-							<div>Приоритет</div>
-							<div>Корреспондент</div>
-							<div>Тип трассы</div>
-							<div>Состояние</div>
+
+			<div class="top_container">
+				<div class="wrapper__1">
+					<form class="search-form" action="" method="">
+						<div><label hidden for="system-search">Фильтр</label>
+							<input placeholder="Поиск..." type="search" name="system-search" id="system-search"
+								class="system-search">
+							<script>
+								document.querySelector('#system-search').addEventListener('keydown', function (e) {
+									if (e.keyCode === 13) {
+										event.preventDefault()
+									}
+								})
+							</script>
 						</div>
-					</div>
-					<div class="popup__bg">
+						<div class="checkbox">
+							<div class="checkbox__wrap">
+								<div class="toggle-pill-dark">
+									<input type="checkbox" id="filter-on" name="state-on" value="В работе">
+									<label for="filter-on"></label>
+								</div>
+								<div class="checkbox__name">Исправные</div>
+							</div>
+							<div class="checkbox__wrap">
+								<div class="toggle-pill-dark">
+									<input type="checkbox" id="filter-off" name="state-off" value="Авария">
+									<label for="filter-off"></label>
+								</div>
+								<div class="checkbox__name">Неисправные</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="main">
+					<div class="wrapper">
+						<div class="table" id="table-systems">
+							<div class="table__title">
+								<div>№</div>
+								<div>Система передачи</div>
+								<div>Приоритет</div>
+								<div>Корреспондент</div>
+								<div>Тип трассы</div>
+								<div>Состояние</div>
+							</div>
+						</div>
+						<div class="popup__bg">
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
 		<script>
 			////////////////////////////MAIN-start////////////////////////////////////////////////
 
@@ -130,7 +148,7 @@
 				document.querySelector('body').style.overflowY = "visible";
 				document.querySelector('body').style.background = "1c1c1c";
 				document.querySelector('.top_container').classList.add('top_container--open');
-				document.querySelector('.table').style.background = "#333333";
+				/* document.querySelector('.table').style.background = "#333333"; */
 				document.querySelector('.animation_load').style.display = "none";
 				document.querySelector('.animation_load-line').style.display = "none";
 			}
@@ -306,20 +324,32 @@
 
 				///////////////////////////////// Звуковая сигнализация end///////////////////////////////////
 
-				////////////////////////////////////// Popup start///////////////////////////////////////////
+				//////////////////////////////////////Popup start///////////////////////////////////////////
 				function popup() {
 					// Отображение и скрытие попапа
 					system.forEach((item) => {
 						item.addEventListener('click', () => {
 							let popup = item.querySelector('.popup')
-							popupBG.classList.add('popup__on')
+							let width_position = (document.documentElement.clientWidth - popup.offsetWidth) / 2
+							let height_position = document.documentElement.clientHeight
+
+							popup.classList.remove('display--none')
+							window.addEventListener('scroll', function () {
+								popup.style.top = window.pageYOffset + ((height_position - popup.offsetHeight) / 2) + "px"
+							})
+							popup.style.top = window.pageYOffset + ((height_position - popup.offsetHeight) / 2) + "px"
+							popup.style.left = width_position + "px"
+							popupBG.classList.add('popup__bg--on')
 							popup.classList.add('popup__on')
 							let popupClose = item.querySelector('.close')
-
 							popupClose.addEventListener('click', (event) => {
 								event.stopPropagation() // Запрет всплытия, иначе при нажатии потоврно навешивает класс
-								popupBG.classList.remove('popup__on')
+								popupBG.classList.remove('popup__bg--on')
 								popup.classList.remove('popup__on')
+								popup.style.left = "-200%"
+								setTimeout(() => {
+									popup.classList.toggle('display--none')
+								}, 1000)
 							})
 						})
 					})
@@ -580,10 +610,6 @@
 			///////////////////////////RENDER_SYSTEMS-end/////////////////////////////////////
 
 		</script>
-		<p style="position: absolute; bottom:0;left: 50%;font-size:12px">Чехов 2022 г.</p>
-
-
-
 
 	</body>
 
