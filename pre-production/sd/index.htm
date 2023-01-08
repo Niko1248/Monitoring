@@ -259,7 +259,7 @@
 				/////////////////////////////////// Обработка Ajax start///////////////////////////////
 				setTimeout(() => {
 					setInterval(function () {
-						/* getPinInfo(); */
+						getPinInfo();
 					}, 2000);
 					function getPinInfo() {
 						var PinRequest = new XMLHttpRequest();
@@ -274,7 +274,7 @@
 									const data = new Date();
 									let logInfoRecovery = '';
 									let logInfoCrash = '';
-									if (stateArray[index] == 1) {
+									if (stateArray[index] == 0) {
 										systemActive.add(el)
 										systemState.innerText = 'В работе';
 										systemState.classList.remove('state_on')
@@ -288,7 +288,7 @@
 											recoveryInfoXHR.send(logInfoRecovery);
 											systemState.dataset.log = 'ready';
 										}
-									} else if (stateArray[index] == 0) {
+									} else if (stateArray[index] == 1) {
 										systemNonActive.add(el);
 										systemState.innerText = 'Авария';
 										systemState.classList.remove('state_on')

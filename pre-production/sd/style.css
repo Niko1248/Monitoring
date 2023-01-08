@@ -768,7 +768,7 @@ circle {
   border-radius: 5px;
 }
 .table__grid:nth-child(2n) {
-  background: rgba(0, 0, 0, 0.407);
+  background: rgba(56, 58, 68, 0.41);
 }
 .table__item:hover {
   background-color: rgba(12, 105, 136, 0.697);
