@@ -112,16 +112,19 @@ void serverWorks2(EthernetClient sclient) {
             sclient.print("adminqwe123");
           } 
           else if (StrContains(HTTP_req, "POST /log_write")) {
-
-           while(sclient.available()){
-              sclient.println("HTTP/1.1 200 OK");
-              myFile = SD.open("log.txt",FILE_WRITE);
-              char c = sclient.read();
-              Serial.write(c); 
-              myFile.write(c);      
-           }
-           myFile.write("\n");
-           myFile.close();
+            myFile = SD.open("log.txt",FILE_WRITE);  
+            while(sclient.connected()){
+              while(sclient.available()){       
+                char c = sclient.read();
+                myFile.write(c);
+                Serial.write(c); 
+              }   
+              myFile.write("\n");
+              myFile.close();
+              req_index = 0;
+              StrClear(HTTP_req, REQ_BUF_SZ);
+              break;
+            }
           }
 
           /////////////////////////////////////Вот заканчивается Ajax///////////////////////////////////////////////
