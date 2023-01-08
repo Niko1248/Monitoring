@@ -49,6 +49,7 @@ void serverWorks2(EthernetClient sclient) {
           HTTP_req[req_index] = c;  // читаем посимвольно запрос
           req_index++;
         }
+        Serial.print(c);
         if (c == '\n' && currentLineIsBlank) {                                               // если символы в запросе кончились то
           if (StrContains(HTTP_req, "GET / ") || StrContains(HTTP_req, "GET /index.htm")) {  // содердит ли реквест GET /index.htm ?
             sclient.println("HTTP/1.1 200 OK");
@@ -109,11 +110,20 @@ void serverWorks2(EthernetClient sclient) {
           } else if (StrContains(HTTP_req, "get_access_backend")) {
             sclient.print("adminqwe123");
           } else if (StrContains(HTTP_req, "log_write")) {
-            if(myFile){
-              Serial.println(c);
-              myFile.println(c);
+            sclient.println("HTTP/1.1 200 OK");
+              while(sclient.available())
+              {
+                char c = sclient.read();
+                myFile.write(c);      
+                Serial.write(c); 
+              }
               myFile.close();
-            }
+            // if(myFile){
+            //   sclient.println("HTTP/1.1 200 OK");
+            //   Serial.print(c);
+            //   myFile.print(c);
+            //   myFile.close();
+            // }
           }
 
           /////////////////////////////////////Вот заканчивается Ajax///////////////////////////////////////////////

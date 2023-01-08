@@ -70,35 +70,6 @@
 					</svg>
 				</div>
 				<audio id="audio" class="audio" src="/alert.ogg" loop></audio>
-
-
-
-				<form class="search-form" action="" method="GET">
-					<div><label hidden for="system-search">Фильтр</label>
-						<input placeholder="Поиск..." type="search" name="system-search" id="system-search"
-							class="system-search">
-					</div>
-					<div class="checkbox">
-						<div class="checkbox__wrap">
-							<div class="toggle-pill-dark">
-								<input type="checkbox" id="filter-on" name="state-on" value="В работе">
-								<label for="filter-on"></label>
-							</div>
-							<div class="checkbox__name">Исправные</div>
-						</div>
-						<div class="checkbox__wrap">
-							<div class="toggle-pill-dark">
-								<input type="checkbox" id="filter-off" name="state-off" value="Авария">
-								<label for="filter-off"></label>
-							</div>
-							<div class="checkbox__name">Неисправные</div>
-						</div>
-					</div>
-					<h2>Войдите в систему</h2>
-					<input type="text" id="login" placeholder="логин">
-					<input type="password" id="password" placeholder="пароль">
-					<button id="aut_btn">войти</button>
-				</form>
 			</div>
 
 			<div class="top_container">
@@ -258,7 +229,23 @@
 				const audio = document.querySelector('.audio')
 				const resetButton = document.querySelector('.reset_button')
 				const preloader = document.querySelector('.preloader')
-				let time = new Date();
+				const data = new Date();
+				month = data.getMonth();
+				switch (month)
+				{
+					case 0: fMonth="января"; break;
+					case 1: fMonth="февраля"; break;
+					case 2: fMonth="марта"; break;
+					case 3: fMonth="апреля"; break;
+					case 4: fMonth="мае"; break;
+					case 5: fMonth="июня"; break;
+					case 6: fMonth="июля"; break;
+					case 7: fMonth="августа"; break;
+					case 8: fMonth="сентября"; break;
+					case 9: fMonth="октября"; break;
+					case 10: fMonth="ноября"; break;
+					case 11: fMonth="декабря"; break;
+				}
 				///////////////////////////////// Preloader start//////////////////////////////////////
 
 				function load() {
@@ -285,6 +272,9 @@
 									let systemRow = el.closest('.table__item');
 									let numberSyst = systemRow.querySelector('.numberSystem')
 									let systemState = systemRow.querySelector('.state');
+									const data = new Date();
+									let logInfoRecovery = '';
+									let logInfoCrash = '';
 									if (stateArray[index] == 1) {
 										systemActive.add(el)
 										systemState.innerText = 'В работе';
@@ -292,16 +282,13 @@
 										systemState.classList.remove('state_off')
 										systemState.classList.add('state_on')
 										systemState.dataset.sound = 'on'
-										// if(systemState.dataset.log == 'on') {
-										// 	console.log('okey recovery');
-										// 	let logInfoRecovery = 'Восстановлено: Система' + numberSyst.innerHTML + time;
-										// 	const recoveryInfoXHR = new XMLHttpRequest();
-										// 	recoveryInfoXHR.open('POST', 'log_write', true);
-										// 	recoveryInfoXHR.send(logInfoRecovery);
-										// 	systemState.dataset.log = 'ready';
-										// 	console.log(logInfoRecovery);
-										// 	console.log('okey 2 recovery');
-										// }
+										if(systemState.dataset.log == 'on') {
+											let logInfoRecovery = 'Восстановлено: Система- ' + numberSyst.innerHTML + ' ' + data.getDate() + ' ' + fMonth + ' ' + data.getFullYear() + ' ' + data.getHours() + ':' + data.getMinutes() + ':' + data.getSeconds();
+											const recoveryInfoXHR = new XMLHttpRequest();
+											recoveryInfoXHR.open('POST', 'log_write', true);
+											recoveryInfoXHR.send(logInfoRecovery);
+											systemState.dataset.log = 'ready';
+										}
 									} else if (stateArray[index] == 0) {
 										systemNonActive.add(el);
 										systemState.innerText = 'Авария';
@@ -311,21 +298,12 @@
 										if (systemState.dataset.sound == 'on') {
 											audio.play()
 										}
-										if (systemState.dataset.log == 'ready') {
-											console.log('okey crash');
+										if(systemState.dataset.log == 'ready') {
 											const crashInfoXHR = new XMLHttpRequest();
-											let logInfoCrash = 'Авария: Система' + numberSyst.innerHTML + time;
+											let logInfoCrash = 'Авария: Система- ' + numberSyst.innerHTML + ' ' + data.getDate() + ' ' + fMonth + ' ' + data.getFullYear() + ' ' + data.getHours() + ':' + data.getMinutes() + ':' + data.getSeconds();
 											crashInfoXHR.open('POST', 'log_write', true);
-											crashInfoXHR.setRequestHeader('Content-Type', 'multipart/form-data');
-											crashInfoXHR.onreadystatechange = function () {
-												if (this.readyState != 4) return;
-
-												alert(this.responseText);
-											}
 											crashInfoXHR.send(logInfoCrash);
 											systemState.dataset.log = 'on';
-											console.log(logInfoCrash);
-											console.log('okey 2 crash');
 										}
 									}
 								});
@@ -383,10 +361,6 @@
 				MuteSound()
 
 				///////////////////////////////// Звуковая сигнализация end///////////////////////////////////
-
-				function LogSend() {
-
-				}
 
 				////////////////////////////////////// Popup start///////////////////////////////////////////
 				function popup() {

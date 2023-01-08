@@ -434,12 +434,12 @@ textarea {
   src: url(/R_L.wof);
 }
 /* roboto-regular - latin_cyrillic */
-@font-face {
+/* @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   src: url(/R_M.wof);
-}
+} */
 
 body {
   font-family: 'Roboto';

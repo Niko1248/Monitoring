@@ -20,7 +20,7 @@ char req_index = 0;                 // index into HTTP_req buffer
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
 IPAddress ip(192, 168, 0, 110);
 EthernetServer server(80);
-EthernetClient dclient;
+
 void setup() {
   Serial.begin(9600);
 
@@ -112,15 +112,16 @@ void serverWorks2(EthernetClient sclient) {
             sclient.print("adminqwe123");
           } 
           else if (StrContains(HTTP_req, "POST /log_write")) {
-            String currentLine = "";
-            sclient.println("HTTP/1.1 200 OK");
-            myFile = SD.open("log.txt", FILE_WRITE);
-            char inChar = sclient.read();
-            myFile.print(inChar);
-            Serial.print(inChar);
-            currentLine += inChar;
-            myFile.print(currentLine);
-            Serial.print(currentLine);
+
+           while(sclient.available()){
+              sclient.println("HTTP/1.1 200 OK");
+              myFile = SD.open("log.txt",FILE_WRITE);
+              char c = sclient.read();
+              Serial.write(c); 
+              myFile.write(c);      
+           }
+           myFile.write("\n");
+           myFile.close();
           }
 
           /////////////////////////////////////Вот заканчивается Ajax///////////////////////////////////////////////
